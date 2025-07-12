@@ -2226,13 +2226,18 @@
 
 <script>
   // reCAPTCHA Loading Function
+  let recaptchaWidgetId = null;
+  let recaptchaReady = false;
+  
   function onRecaptchaLoad() {
-    grecaptcha.render('recaptcha-container', {
+    recaptchaWidgetId = grecaptcha.render('recaptcha-container', {
       'sitekey': '6Lf34YArAAAAAKN6lzY6PcEpSOH7wCELbXECfd34',
       'callback': function(response) {
         console.log('reCAPTCHA completed:', response);
+        recaptchaReady = true;
       }
     });
+    recaptchaReady = true;
   }
   
   // Skill data
@@ -2389,9 +2394,14 @@
     const submitBtn = document.getElementById('sendMessageBtn');
     const originalText = submitBtn.textContent;
     
-    // Check if reCAPTCHA is completed
+    // Check if reCAPTCHA is ready and completed
+    if (!recaptchaReady || typeof grecaptcha === 'undefined' || !grecaptcha.getResponse) {
+      alert('reCAPTCHA is not loaded. Please refresh the page and try again.');
+      return;
+    }
+    
     const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
+    if (!recaptchaResponse || recaptchaResponse.length === 0) {
       alert('Please complete the reCAPTCHA verification before sending your message.');
       return;
     }
@@ -2421,7 +2431,9 @@
       document.getElementById('contactForm').reset();
       
       // Reset reCAPTCHA
-      grecaptcha.reset();
+      if (recaptchaWidgetId !== null) {
+        grecaptcha.reset(recaptchaWidgetId);
+      }
       
       // Reset button
       submitBtn.textContent = originalText;
@@ -2431,7 +2443,9 @@
       alert('Sorry, there was an error sending your message. Please try again or contact me directly at ta309ha@gmail.com');
       
       // Reset reCAPTCHA
-      grecaptcha.reset();
+      if (recaptchaWidgetId !== null) {
+        grecaptcha.reset(recaptchaWidgetId);
+      }
       
       // Reset button
       submitBtn.textContent = originalText;
