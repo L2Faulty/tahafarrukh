@@ -2389,6 +2389,13 @@
     const submitBtn = document.getElementById('sendMessageBtn');
     const originalText = submitBtn.textContent;
     
+    // Check if reCAPTCHA is completed
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      alert('Please complete the reCAPTCHA verification before sending your message.');
+      return;
+    }
+    
     // Show loading state
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
@@ -2413,12 +2420,18 @@
       alert('Thank you for your message! I will get back to you soon.');
       document.getElementById('contactForm').reset();
       
+      // Reset reCAPTCHA
+      grecaptcha.reset();
+      
       // Reset button
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
     }, function(error) {
       // Error
       alert('Sorry, there was an error sending your message. Please try again or contact me directly at ta309ha@gmail.com');
+      
+      // Reset reCAPTCHA
+      grecaptcha.reset();
       
       // Reset button
       submitBtn.textContent = originalText;
