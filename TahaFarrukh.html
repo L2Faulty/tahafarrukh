@@ -1,0 +1,2576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taha Farrukh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <style>
+    :root {
+      --main-bg: #36454F;
+      --accent: #f5f5f5;
+      --highlight: #4a5a65;
+      --card-bg: #d1d1d1;
+      --card-text: #111;
+      --footer-bg: #36454F;
+      --light-gray: #d1d1d1;
+      --blue-accent: #2196F3;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--accent);
+      color: #000;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      height: 100%;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--main-bg);
+      color: white;
+      padding: 20px 25px;
+      font-family: 'Inter', sans-serif;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .header-left {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .header-right a,
+    .dropbtn {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: none;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .header-right a:hover,
+    .dropbtn:hover {
+      background: none;
+      text-decoration: none;
+      color: white;
+      opacity: 0.8;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 5px;
+      background-color: var(--main-bg); width: 60%;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      text-align: left;
+      font-weight: 400;
+      background-color: transparent;
+      transition: all 0.2s ease;
+    }
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content,
+    .dropdown-content:hover {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+    .settings-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .settings-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 5px;
+      background-color: var(--main-bg); width: 60%;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+      padding: 15px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .settings-dropdown:hover .settings-content,
+    .settings-dropdown:focus-within .settings-content,
+    .settings-content:hover {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      cursor: pointer;
+      padding: 8px 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .mode-toggle-text {
+      font-size: 1rem;
+      margin-right: 10px;
+      font-weight: 400;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: relative;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: all 0.4s ease;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: relative;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: all 0.4s ease;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--main-bg);
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .menu-toggle, .sidebar {
+      display: none;
+    }
+    
+    /* Mobile menu toggle button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle:hover {
+      opacity: 0.8;
+    }
+    .main-content {
+      transition: all 0.3s ease;
+      padding-top: 80px;
+      flex: 1 0 auto;
+    }
+    section {
+      min-height: 100vh;
+      padding: 80px 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    section:not(.hidden-section) {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    .hidden-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    /* Projects Section Styles */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .project-card {
+      background: var(--main-bg);
+      color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .project-card:hover::before {
+      left: 100%;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      background: var(--highlight);
+      color: white;
+      text-decoration: none;
+    }
+    
+    .project-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--blue-accent);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover .project-icon {
+      transform: scale(1.1);
+      color: white;
+    }
+    
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+      line-height: 1.5;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover p {
+      color: rgba(255,255,255,0.9);
+    }
+    footer {
+      background: var(--footer-bg);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .footer-links {
+      margin-bottom: 30px;
+    }
+    .footer-links a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+    .card-link {
+      background: var(--main-bg);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    .card-link:hover {
+      background: var(--highlight);
+      transform: translateY(-3px);
+    }
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      font-size: 14px;
+      background: var(--main-bg);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+    #scrollTopBtn:hover {
+      opacity: 1;
+    }
+    #scrollTopBtn::after {
+      content: "↑";
+      display: block;
+      font-size: 18px;
+    }
+    #home .home-menu {
+      margin-top: 40px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #home .home-menu a {
+      background: var(--main-bg);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    #home .home-menu a:hover {
+      background: var(--highlight);
+      transform: translateY(-3px);
+    }
+
+    /* Skills Section Styles */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      transition: all 0.5s ease;
+      align-items: stretch;
+    }
+
+    .skill-box {
+      background: var(--main-bg);
+      color: white;
+      border-radius: 10px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transform: scale(1);
+      min-height: 150px;
+      height: 180px;
+      margin: 0;
+    }
+
+    .skill-box:hover {
+      background: var(--highlight);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .skill-box h3 {
+      margin: 0;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    /* Skill Popup Modal */
+    .skill-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: var(--main-bg);
+      color: white;
+      border-radius: 15px;
+      padding: 40px;
+      width: 85%;
+      max-width: 800px;
+      height: auto;
+      min-height: 400px;
+      max-height: 90vh;
+      z-index: 1000;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      display: none;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .skill-popup.active {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .skill-popup-content {
+      position: relative;
+      height: 100%;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .skill-popup h3 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-popup ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 auto;
+      width: 80%;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .skill-popup li {
+      padding: 12px 0;
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+    
+    .skill-popup li:before {
+      content: "•";
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1em;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .popup-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      height: auto;
+      background: none;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      opacity: 0.8;
+      padding: 0 10px;
+      z-index: 2;
+    }
+    
+    .popup-nav:hover {
+      background: none;
+      transform: translateY(-50%) scale(1.1);
+      opacity: 1;
+    }
+    
+    .popup-prev {
+      left: 0;
+      right: auto;
+    }
+    
+    .popup-next {
+      right: 0;
+      left: auto;
+    }
+    
+    .popup-nav i {
+      font-weight: bold;
+      font-size: 2.5rem;
+    }
+    
+    .popup-close {
+      position: relative;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+    
+    .popup-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0);
+      z-index: 999;
+      display: none;
+      transition: background 0.4s ease;
+    }
+    
+    .overlay.active {
+      display: block;
+      background: rgba(0,0,0,0.7);
+    }
+
+
+    
+    /* Contact Form */
+    .contact-form {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--main-bg);
+      box-shadow: 0 0 5px rgba(54, 69, 79, 0.3);
+      outline: none;
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: var(--main-bg);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: var(--highlight);
+      transform: translateY(-2px);
+    }
+    
+    /* Downloads Section */
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .download-item {
+      background: var(--main-bg);
+      color: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .download-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .download-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .download-item:hover .download-icon {
+      transform: scale(1.1);
+    }
+    .download-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+    .download-item p {
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.8);
+    }
+    .download-btn {
+      background: white;
+      color: var(--main-bg);
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+    }
+    .download-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* About Section Styles */
+    .about-content {
+      max-width: 800px;
+      text-align: left;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .about-content p {
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    /* Language Selector Styles */
+    .language-selector {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .language-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      padding: 8px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .language-options {
+      display: none;
+      margin-top: 5px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .language-options.show {
+      display: block;
+      max-height: 300px;
+    }
+    
+    .language-option {
+      display: block;
+      color: white;
+      padding: 8px 0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .language-option:hover {
+      color: var(--blue-accent);
+      transform: translateX(5px);
+    }
+    
+    .language-option.active {
+      color: white;
+      font-weight: 600;
+    }
+    
+    .arrow {
+      transition: all 0.3s ease;
+    }
+    
+    .arrow.down {
+      transform: rotate(90deg);
+    }
+
+    /* Updated Education Timeline Styles with Blue Line and Dots */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      background-color: var(--main-bg);
+      position: absolute;
+      width: 3px;
+      background-color: var(--main-bg);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1.5px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 90px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      height: 160px;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      border: 3px solid var(--blue-accent);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    
+    .timeline-item:hover .timeline-content,
+    .timeline-item:active .timeline-content,
+    .timeline-content:active {
+      box-shadow: none !important;
+    }
+    
+    .timeline-content {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 320px;
+      padding: 28px 18px;
+      background-color: var(--main-bg);
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      box-sizing: border-box;
+      min-height: 80px;
+      transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s, color 0.3s, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      right: 50%;
+      left: auto;
+      margin-right: 0px;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+      left: 50%;
+      right: auto;
+      margin-left: 0px;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .timeline-item:nth-child(3) .timeline-content {
+      right: 50%;
+      left: auto;
+      margin-right: 0px;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .timeline-content .year {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    .timeline-content .qualification {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 0;
+      line-height: 1.2;
+      background: #222c36;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.04);
+      display: inline-block;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    
+    /* Timeline hover effects */
+    .timeline-item:hover .timeline-dot {
+      border-color: var(--blue-accent);
+      background-color: var(--blue-accent);
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    
+    .timeline-item:hover .timeline-content {
+      transform: translateY(-50%) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    /* Certifications Section Styles */
+    .certifications-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .certification-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: var(--main-bg);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border: none;
+      min-width: 400px;
+      max-width: 98%;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .certification-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      background: var(--highlight);
+    }
+
+    .certification-logo-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: white;
+      padding: 5px;
+    }
+    
+    .certification-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .certification-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .certification-title, .certification-issuer {
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .certification-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .certification-title a {
+      white-space: nowrap;
+      display: inline-block;
+      overflow-x: auto;
+      max-width: 100%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .certification-title a:visited,
+    .certification-title a:active {
+      color: white;
+    }
+
+    .certification-title a:hover {
+      color: var(--blue-accent);
+      text-decoration: underline;
+      transform: scale(1.02);
+    }
+
+    .certification-issuer {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+    }
+
+    /* Dark Mode Adjustments - Keep timeline exactly the same */
+    body.dark-mode .timeline-content {
+      background-color: var(--main-bg);
+      color: white;
+    }
+    
+    body.dark-mode .timeline-content .year {
+      color: #fff;
+    }
+    
+    body.dark-mode .timeline-content .qualification {
+      background: #222c36;
+      color: #fff;
+    }
+    
+    body.dark-mode .timeline-item:hover .timeline-content {
+      box-shadow: none !important;
+    }
+    
+    /* Comprehensive Mobile Responsive Design */
+    @media (max-width: 768px) {
+      /* Header adjustments */
+      header {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+      }
+      
+      /* Mobile menu toggle */
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .header-right {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--main-bg);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        transition: left 0.3s ease;
+        z-index: 998;
+        overflow-y: auto;
+      }
+      
+      .header-right.active {
+        left: 0;
+      }
+      
+      .header-right a,
+      .dropbtn {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1rem;
+      }
+      
+      .dropdown-content,
+      .settings-content {
+        position: static;
+        width: 100%;
+        min-width: auto;
+        box-shadow: none;
+        background: rgba(255,255,255,0.05);
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+      
+      .dropdown-content a {
+        padding: 12px 20px;
+        border-bottom: none;
+      }
+      
+      .settings-content {
+        padding: 20px;
+      }
+      
+      .mode-toggle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .language-selector {
+        margin-top: 20px;
+      }
+      
+      .header-left {
+        font-size: 1.3rem;
+      }
+      
+      .header-right {
+        gap: 15px;
+      }
+      
+      .header-right a,
+      .dropbtn {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+      }
+      
+      /* Dropdown adjustments */
+      .dropdown-content,
+      .settings-content {
+        min-width: 180px;
+        width: 80%;
+      }
+      
+      .dropdown-content a {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+      
+      /* Main content adjustments */
+      .main-content {
+        padding-top: 70px;
+      }
+      
+      section {
+        padding: 60px 15px 30px;
+        min-height: auto;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+      }
+      
+      /* Home section */
+      #home h1 {
+        font-size: 2.5rem !important;
+      }
+      
+      #home p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+      
+      #home .home-menu {
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #home .home-menu a {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        width: 200px;
+        text-align: center;
+      }
+      
+      /* About section */
+      .about-content {
+        padding: 15px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      
+      .about-content p {
+        margin-bottom: 15px;
+      }
+      
+      /* Skills section */
+      .skills-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 400px;
+      }
+      
+      .skill-box {
+        min-height: 120px;
+        height: 140px;
+        padding: 15px;
+      }
+      
+      .skill-box h3 {
+        font-size: 1.3rem;
+      }
+      
+      /* Skill popup adjustments */
+      .skill-popup {
+        width: 90%;
+        padding: 25px;
+        max-height: 85vh;
+      }
+      
+      .skill-popup h3 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+      
+      .skill-popup li {
+        font-size: 1rem;
+        padding: 10px 0;
+        margin-bottom: 6px;
+      }
+      
+      .popup-nav {
+        font-size: 1.5rem;
+        padding: 0 8px;
+      }
+      
+      .popup-prev {
+        left: -15px;
+      }
+      
+      .popup-next {
+        right: -15px;
+      }
+      
+      /* Projects section */
+      .projects-container {
+        padding: 15px;
+        gap: 15px;
+      }
+      
+      .project-card {
+        padding: 20px;
+        margin: 0;
+      }
+      
+      .project-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+      }
+      
+      .project-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+      
+      .project-card p {
+        font-size: 0.9rem;
+      }
+      
+      /* Timeline adjustments for mobile */
+      .timeline {
+        padding: 20px 0;
+        max-width: 100%;
+      }
+      
+      .timeline::before {
+        left: 40px;
+        width: 4px;
+      }
+      
+      .timeline-item {
+        margin-bottom: 60px;
+        min-height: 100px;
+        height: auto;
+        display: block;
+      }
+      
+      .timeline-dot {
+        left: 40px;
+        width: 16px;
+        height: 16px;
+        border-width: 2px;
+      }
+      
+      .timeline-content {
+        position: relative;
+        top: auto;
+        transform: none;
+        width: calc(100% - 80px);
+        left: 80px !important;
+        right: auto !important;
+        margin: 0 !important;
+        padding: 20px 15px;
+        min-height: auto;
+        height: auto;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content,
+      .timeline-item:nth-child(3) .timeline-content {
+        left: 80px !important;
+        right: auto !important;
+        margin: 0 !important;
+      }
+      
+      .timeline-content .year {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      
+      .timeline-content .qualification {
+        font-size: 1rem;
+        padding: 8px 12px;
+        line-height: 1.3;
+      }
+      
+      /* Certifications section */
+      .certifications-container {
+        padding: 15px;
+      }
+      
+      .certification-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-width: 280px;
+        max-width: 100%;
+        width: 95%;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .certification-logo-container {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 70px;
+        height: 70px;
+      }
+      
+      .certification-title {
+        font-size: 1.2rem;
+      }
+      
+      .certification-title a {
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 100%;
+      }
+      
+      .certification-issuer {
+        font-size: 0.85rem;
+      }
+      
+      /* Downloads section */
+      .download-grid {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .download-item {
+        width: 280px;
+        padding: 25px 20px;
+      }
+      
+      .download-item h3 {
+        font-size: 1.3rem;
+      }
+      
+      /* Contact form */
+      .contact-form {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        padding: 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+      
+      .form-group textarea {
+        min-height: 120px;
+      }
+      
+      .submit-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        width: 100%;
+      }
+      
+      /* Footer adjustments */
+      footer {
+        padding: 40px 15px;
+        font-size: 1rem;
+      }
+      
+      .footer-links {
+        margin-bottom: 25px;
+      }
+      
+      .footer-links a {
+        margin: 0 8px;
+        font-size: 1rem;
+      }
+      
+      /* Scroll to top button */
+      #scrollTopBtn {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      /* Extra small devices */
+      header {
+        padding: 12px 15px;
+      }
+      
+      .header-left {
+        font-size: 1.2rem;
+      }
+      
+      .header-right {
+        gap: 10px;
+      }
+      
+      .header-right a,
+      .dropbtn {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+      }
+      
+      section {
+        padding: 50px 10px 25px;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      
+      #home h1 {
+        font-size: 2.2rem !important;
+      }
+      
+      #home p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+      
+      #home .home-menu a {
+        width: 180px;
+        padding: 10px 15px;
+        font-size: 0.85rem;
+      }
+      
+      .about-content {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      
+      .skills-container {
+        max-width: 320px;
+        gap: 12px;
+      }
+      
+      .skill-box {
+        min-height: 100px;
+        height: 120px;
+        padding: 12px;
+      }
+      
+      .skill-box h3 {
+        font-size: 1.2rem;
+      }
+      
+      .skill-popup {
+        width: 95%;
+        padding: 20px;
+        max-height: 80vh;
+      }
+      
+      .skill-popup h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+      
+      .skill-popup li {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        padding-left: 20px;
+      }
+      
+      .popup-nav {
+        font-size: 1.3rem;
+      }
+      
+      .popup-prev {
+        left: -10px;
+      }
+      
+      .popup-next {
+        right: -10px;
+      }
+      
+      .projects-container {
+        padding: 10px;
+        gap: 12px;
+      }
+      
+      .project-card {
+        padding: 18px;
+        margin: 0;
+      }
+      
+      .project-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .project-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+      }
+      
+      .project-card p {
+        font-size: 0.85rem;
+      }
+      
+      .timeline {
+        padding: 15px 0;
+      }
+      
+      .timeline::before {
+        left: 35px;
+      }
+      
+      .timeline-dot {
+        left: 35px;
+        width: 14px;
+        height: 14px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 70px);
+        left: 70px !important;
+        padding: 15px 12px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content,
+      .timeline-item:nth-child(3) .timeline-content {
+        left: 70px !important;
+      }
+      
+      .timeline-content .year {
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+      
+      .timeline-content .qualification {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+        line-height: 1.2;
+      }
+      
+      /* Certifications section */
+      .certification-item {
+        min-width: 250px;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .certification-logo-container {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+      }
+      
+      .certification-title {
+        font-size: 1.1rem;
+      }
+      
+      .certification-issuer {
+        font-size: 0.8rem;
+      }
+      
+      .download-item {
+        width: 260px;
+        padding: 20px 15px;
+      }
+      
+      .download-item h3 {
+        font-size: 1.2rem;
+      }
+      
+      .download-icon {
+        font-size: 2rem;
+      }
+      
+      .contact-form {
+        padding: 0 5px;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        padding: 10px;
+      }
+      
+      .form-group textarea {
+        min-height: 100px;
+      }
+      
+      .submit-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+      
+      footer {
+        padding: 30px 10px;
+        font-size: 0.9rem;
+      }
+      
+      .footer-links a {
+        margin: 0 6px;
+        font-size: 0.9rem;
+      }
+      
+      #scrollTopBtn {
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      /* Very small devices */
+      .header-left {
+        font-size: 1.1rem;
+      }
+      
+      .header-right a,
+      .dropbtn {
+        font-size: 0.75rem;
+        padding: 2px 4px;
+      }
+      
+      #home h1 {
+        font-size: 2rem !important;
+      }
+      
+      #home p {
+        font-size: 0.85rem;
+      }
+      
+      #home .home-menu a {
+        width: 160px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .skills-container {
+        max-width: 280px;
+      }
+      
+      .skill-box {
+        min-height: 90px;
+        height: 110px;
+      }
+      
+      .skill-box h3 {
+        font-size: 1.1rem;
+      }
+      
+      .skill-popup {
+        width: 98%;
+        padding: 15px;
+      }
+      
+      .skill-popup h3 {
+        font-size: 1.3rem;
+      }
+      
+      .skill-popup li {
+        font-size: 0.85rem;
+        padding-left: 18px;
+      }
+      
+      .timeline {
+        padding: 10px 0;
+      }
+      
+      .timeline::before {
+        left: 30px;
+        width: 3px;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+        width: 12px;
+        height: 12px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 60px);
+        left: 60px !important;
+        padding: 12px 10px;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content,
+      .timeline-item:nth-child(3) .timeline-content {
+        left: 60px !important;
+      }
+      
+      .timeline-content .year {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+      
+      .timeline-content .qualification {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+        line-height: 1.1;
+      }
+      
+      .download-item {
+        width: 240px;
+        padding: 15px 12px;
+      }
+      
+      .download-item h3 {
+        font-size: 1.1rem;
+      }
+      
+      .download-icon {
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* Landscape orientation adjustments */
+    @media (max-width: 768px) and (orientation: landscape) {
+      section {
+        min-height: auto;
+        padding: 40px 15px 20px;
+      }
+      
+      .skill-popup {
+        max-height: 75vh;
+      }
+      
+      .timeline-item {
+        margin-bottom: 60px;
+        min-height: 100px;
+        height: 120px;
+      }
+    }
+    
+    /* High DPI displays */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .skill-box,
+      .project-card,
+      .download-item,
+      .timeline-content {
+        border-radius: 8px;
+      }
+    }
+    
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+      .skill-box:hover,
+      .project-card:hover,
+      .download-item:hover,
+      .card-link:hover {
+        transform: none;
+      }
+      
+      .skill-box:active,
+      .project-card:active,
+      .download-item:active,
+      .card-link:active {
+        transform: scale(0.98);
+      }
+      
+      .submit-btn:hover {
+        transform: none;
+      }
+      
+      .submit-btn:active {
+        transform: scale(0.95);
+      }
+      
+      /* Increase touch targets */
+      .header-right a,
+      .dropbtn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .dropdown-content a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .popup-nav {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .popup-close {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .mobile-menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .skill-box {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .skill-box:active {
+        background: var(--highlight);
+      }
+    }
+    
+    /* Prevent zoom on input focus for iOS */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px;
+      }
+    }
+    
+    /* Smooth scrolling for iOS */
+    @supports (-webkit-overflow-scrolling: touch) {
+      html, body {
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    
+    /* Better focus indicators for accessibility */
+    .skill-box:focus,
+    .project-card:focus,
+    .download-item:focus,
+    .card-link:focus,
+    .submit-btn:focus,
+    .header-right a:focus,
+    .dropbtn:focus {
+      outline: 2px solid var(--blue-accent);
+      outline-offset: 2px;
+    }
+    
+    /* Loading states for better UX */
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    /* Better mobile navigation */
+    @media (max-width: 768px) {
+      .header-right a:focus,
+      .dropbtn:focus {
+        outline: none;
+        background: rgba(255,255,255,0.1);
+      }
+      
+      .skill-box:focus,
+      .project-card:focus,
+      .download-item:focus {
+        outline: 2px solid var(--blue-accent);
+        outline-offset: 1px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header id="site-header">
+  <div class="header-left" id="siteTitle">Taha Farrukh</div>
+  <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="header-right" id="headerRight">
+    <a href="#" id="navHome" onclick="showSection('home')">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn" id="navMenu">Menu</button>
+      <div class="dropdown-content">
+        <a href="#" id="navAbout" onclick="showSection('about')">About</a>
+        <a href="#" id="navSkills" onclick="showSection('skills')">Skills</a>
+        <a href="#" id="navProjects" onclick="showSection('projects')">Projects</a>
+        <a href="#" id="navEducation" onclick="showSection('education')">Education</a>
+        <a href="#" id="navCertifications" onclick="showSection('certifications')">Licenses & Certifications</a>
+        <a href="#" id="navDownloads" onclick="showSection('downloads')">Downloads</a>
+      </div>
+    </div>
+    <div class="settings-dropdown">
+      <button class="dropbtn" id="navSettings">Settings</button>
+      <div class="settings-content">
+        <div class="mode-toggle">
+          <span class="mode-toggle-text" id="modeToggleText">Light/Dark Mode</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+          <button id="iconModeToggle" style="background:none;border:none;outline:none;cursor:pointer;font-size:1.5rem;margin-left:10px;color:white;display:flex;align-items:center;">
+            <i id="modeIcon" class="fas fa-moon"></i>
+          </button>
+        </div>
+        <div class="language-selector">
+          <button class="language-btn" onclick="toggleLanguageMenu()" id="languageBtn">
+            Language
+            <span class="arrow">→</span>
+          </button>
+          <div class="language-options" id="languageOptions">
+            <a href="#" class="language-option active" onclick="changeLanguage('en')">English</a>
+            <a href="#" class="language-option" onclick="changeLanguage('ur')">Urdu</a>
+            <a href="#" class="language-option" onclick="changeLanguage('fr')">Français</a>
+            <a href="#" class="language-option" onclick="changeLanguage('es')">Español</a>
+            <a href="#" class="language-option" onclick="changeLanguage('it')">Italiano</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main-content" id="content">
+  <section id="home">
+    <h1 style="font-size: 3rem;" id="homeTitle">Taha Farrukh</h1>
+    <p id="homeSubtitle">Mechanical Engineering Student | NUST '28 | F1 & Automotive Enthusiast</p>
+    <div class="home-menu">
+      <a href="#" id="homeAbout" onclick="showSection('about')">About</a>
+      <a href="#" id="homeSkills" onclick="showSection('skills')">Skills</a>
+      <a href="#" id="homeProjects" onclick="showSection('projects')">Projects</a>
+      <a href="#" id="homeEducation" onclick="showSection('education')">Education</a>
+      <a href="#" id="homeCertifications" onclick="showSection('certifications')">Certifications</a>
+      <a href="#" id="homeDownloads" onclick="showSection('downloads')">Downloads</a>
+    </div>
+  </section>
+  
+  <section id="about" class="hidden-section">
+    <h2 id="aboutTitle">About Me</h2>
+    <div class="about-content">
+      <p id="aboutP1">I'm a Mechanical Engineering student, having just completed my first year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.</p>
+      
+      <p id="aboutP2">Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I've come to appreciate the complexity and innovation behind high-performance engineering.</p>
+      
+      <p id="aboutP3">Lately, I've also been diving into the world of aviation — particularly aircraft and fighter jet design and manufacturing. I'm fascinated by the engineering challenges humanity has overcome to achieve controlled flight and supersonic speed.</p>
+      
+      <p id="aboutP4">Currently, I'm building my skills through online courses in design, simulation, and programming, and I'm always eager to explore new tools and technologies that align with my interests.</p>
+      
+      <p id="aboutP5">I'm an aspiring F1 engineer, and I'm always open to connecting with like-minded people — whether that's on LinkedIn or over email.</p>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills" class="hidden-section">
+    <h2 id="skillsTitle">Skills</h2>
+    <div class="skills-container">
+      <div class="skill-box" onclick="openSkillPopup(0)">
+        <h3>Ansys Mechanical</h3>
+      </div>
+      
+      <div class="skill-box" onclick="openSkillPopup(1)">
+        <h3>AutoCAD Mechanical</h3>
+      </div>
+      
+      <div class="skill-box" onclick="openSkillPopup(2)">
+        <h3>Programming</h3>
+      </div>
+      
+      <div class="skill-box" onclick="openSkillPopup(3)">
+        <h3>Microsoft Office</h3>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects" class="hidden-section">
+    <h2 id="projectsTitle">Projects</h2>
+    <div class="projects-container">
+      <a class="project-card" href="project1.html" target="_blank">
+        <div class="project-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <h3>AutoCAD Project – 4-Bolt Bearing Block</h3>
+        <p id="project1Desc">3D modeling and mechanical design using AutoCAD</p>
+      </a>
+      <a class="project-card" href="project2.html" target="_blank">
+        <div class="project-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>ASME – Feynman's Trap Design Challenge</h3>
+        <p id="project2Desc">Innovative design challenge and engineering solution</p>
+      </a>
+      <a class="project-card" href="project3.html" target="_blank">
+        <div class="project-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3>ANSYS Mechanical – Basic Truss Analysis</h3>
+        <p id="project3Desc">Structural analysis and simulation using ANSYS</p>
+      </a>
+    </div>
+  </section>
+  
+  <!-- Education Section -->
+  <section id="education" class="hidden-section">
+    <h2 id="educationTitle">Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="year">2021 – 2022</div>
+          <div class="qualification">O Levels</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="year">2022 – 2024</div>
+          <div class="qualification">A Levels</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="year">2024 – Present</div>
+          <div class="qualification">BE Mechanical Engineering<br><span style="font-weight: 500;">(NUST)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Certifications Section -->
+  <section id="certifications" class="hidden-section">
+    <h2 id="certificationsTitle">Licenses & Certifications</h2>
+    <div class="certifications-container">
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="umich.png" alt="University of Michigan logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/verify/763X0UL2J52O" target="_blank">Python For Everybody</a>
+          </div>
+          <div class="certification-issuer">University of Michigan</div>
+        </div>
+      </div>
+      
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="umich.png" alt="University of Michigan logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/verify/T3PJWC86XHCY" target="_blank">Python Data Structures</a>
+          </div>
+          <div class="certification-issuer">University of Michigan</div>
+        </div>
+      </div>
+      
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="coursera.png" alt="Coursera logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/verify/SHQYA8HAQSTZ" target="_blank">Innovate with ANSYS Simulation Tools</a>
+          </div>
+          <div class="certification-issuer">Coursera Instructor Network</div>
+        </div>
+      </div>
+      
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="coursera.png" alt="Coursera logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/verify/6E25CVZCNO43" target="_blank">Product Development using AutoCAD</a>
+          </div>
+          <div class="certification-issuer">Coursera Project Network</div>
+        </div>
+      </div>
+      
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="asu.png" alt="Arizona State University logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/verify/9MDT1GBCP3L5" target="_blank">Engineering and Product Design Processes</a>
+          </div>
+          <div class="certification-issuer">Arizona State University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="hidden-section">
+    <h2 id="contactTitle">Contact Me</h2>
+    <form class="contact-form" id="contactForm">
+      <p style="font-size:0.85rem; color:#888; margin-bottom: 30px;" id="contactAlt">Alternatively, contact me at <span style="color:#aaa;" id="contactEmail">ta309ha@gmail.com</span></p>
+      <div class="form-group">
+        <label for="name" id="labelName">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <label for="email" id="labelEmail">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message" id="labelMessage">Message</label>
+        <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="sendMessageBtn">Send Message</button>
+    </form>
+  </section>
+  
+  <!-- Downloads Section -->
+  <section id="downloads" class="hidden-section">
+    <h2 id="downloadsTitle">Downloads</h2>
+    <div class="download-grid">
+      <div class="download-item">
+        <i class="fas fa-file-pdf download-icon"></i>
+        <h3 id="resumeTitle">Resume</h3>
+        <p id="resumeDesc">My updated professional resume</p>
+        <a href="#" class="download-btn" id="resumeBtn" onclick="alert('No file available for download'); return false;">Download PDF</a>
+      </div>
+      <div class="download-item">
+        <i class="fas fa-graduation-cap download-icon"></i>
+        <h3 id="transcriptTitle">Academic Transcript</h3>
+        <p id="transcriptDesc">Official university transcript</p>
+        <a href="#" class="download-btn" id="transcriptBtn" onclick="alert('No file available for download'); return false;">Download PDF</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
+      <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
+      <a href="#" onclick="showSection('contact')" id="footerEmail">Email</a>
+    </div>
+    <div id="footerCopyright">© 2025 Taha Farrukh</div>
+  </footer>
+</div>
+
+<!-- Skill Popup Modal -->
+<div class="overlay" id="skillOverlay" onclick="closeSkillPopup()"></div>
+<div class="skill-popup" id="skillPopup">
+  <button class="popup-close" style="position:absolute; top:20px; right:20px;" onclick="closeSkillPopup()">&times;</button>
+  <div class="skill-popup-content" style="justify-content: center; align-items: center; text-align: center;">
+    <button class="popup-nav popup-prev" style="position:absolute; left:0; top:50%; transform:translateY(-50%);" onclick="navigateSkill(-1)"><i class="fas fa-chevron-left"></i></button>
+    <h3 id="popupSkillTitle">Skill Title</h3>
+    <ul id="popupSkillDetails">
+      <!-- Skill details will be inserted here -->
+    </ul>
+    <button class="popup-nav popup-next" style="position:absolute; right:0; top:50%; transform:translateY(-50%);" onclick="navigateSkill(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</div>
+
+<script>
+  // Skill data
+  const skillsData = [
+    {
+      title: "Ansys Mechanical",
+      details: [
+        "Force Analysis",
+        "Stress and Strain Analysis",
+        "Structural Analysis",
+        "Simulation and Modeling"
+      ]
+    },
+    {
+      title: "AutoCAD Mechanical",
+      details: [
+        "2D Drawing",
+        "3D Modeling",
+        "Technical Drafting",
+        "Mechanical Design"
+      ]
+    },
+    {
+      title: "Programming",
+      details: [
+        "Python",
+        "C++"
+      ]
+    },
+    {
+      title: "Microsoft Office",
+      details: [
+        "MS Word",
+        "PowerPoint",
+        "Excel"
+      ]
+    }
+  ];
+  
+  let currentSkillIndex = 0;
+  
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => {
+      sec.classList.add('hidden-section');
+    });
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.remove('hidden-section');
+      setTimeout(() => {
+        target.style.opacity = '1';
+      }, 10);
+    }
+
+    const footer = document.getElementById('footer');
+    if (id === 'home') {
+      if (footer) footer.style.display = 'none';
+    } else {
+      if (footer) footer.style.display = 'block';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleDarkMode(force) {
+    let isDark;
+    if (typeof force === 'boolean') {
+      isDark = force;
+      document.body.classList.toggle('dark-mode', isDark);
+    } else {
+      document.body.classList.toggle('dark-mode');
+      isDark = document.body.classList.contains('dark-mode');
+    }
+    localStorage.setItem('darkMode', isDark);
+    document.getElementById('darkModeToggle').checked = isDark;
+    updateModeIcon(isDark);
+  }
+
+  function updateModeIcon(isDark) {
+    const icon = document.getElementById('modeIcon');
+    if (isDark) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      icon.title = 'Switch to Light Mode';
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      icon.title = 'Switch to Dark Mode';
+    }
+  }
+
+
+
+  // Skill Popup Functions
+  function openSkillPopup(index) {
+    currentSkillIndex = index;
+    updateSkillPopup();
+    document.getElementById('skillOverlay').classList.add('active');
+    setTimeout(() => {
+      document.getElementById('skillPopup').classList.add('active');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeSkillPopup() {
+    document.getElementById('skillPopup').classList.remove('active');
+    document.getElementById('skillOverlay').classList.remove('active');
+    setTimeout(() => {
+      document.body.style.overflow = '';
+    }, 400);
+  }
+  
+  function navigateSkill(direction) {
+    // Add animation class for transition
+    const popup = document.getElementById('skillPopup');
+    popup.style.opacity = '0';
+    popup.style.transform = `translate(-50%, -50%) scale(0.95) ${direction > 0 ? 'translateX(20px)' : 'translateX(-20px)'}`;
+    
+    setTimeout(() => {
+      currentSkillIndex += direction;
+      
+      // Wrap around if at beginning or end
+      if (currentSkillIndex < 0) {
+        currentSkillIndex = skillsData.length - 1;
+      } else if (currentSkillIndex >= skillsData.length) {
+        currentSkillIndex = 0;
+      }
+      
+      updateSkillPopup();
+      
+      // Restore popup position and opacity
+      popup.style.opacity = '1';
+      popup.style.transform = 'translate(-50%, -50%) scale(1)';
+    }, 300);
+  }
+  
+  function updateSkillPopup() {
+    const skill = skillsData[currentSkillIndex];
+    document.getElementById('popupSkillTitle').textContent = skill.title;
+    
+    const detailsList = document.getElementById('popupSkillDetails');
+    detailsList.innerHTML = '';
+    
+    skill.details.forEach(detail => {
+      const li = document.createElement('li');
+      li.textContent = detail;
+      detailsList.appendChild(li);
+    });
+  }
+
+  // Form Submission Handling
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('sendMessageBtn');
+    const originalText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Get form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    // EmailJS configuration
+    emailjs.init("dnE5cqzrhDv3gc06f"); // EmailJS public key
+    
+    // Send email using EmailJS
+    emailjs.send("service_5f8xd89", "template_xq4m5ku", {
+      from_name: name,
+      from_email: email,
+      message: message,
+      to_email: "ta309ha@gmail.com"
+    })
+    .then(function(response) {
+      // Success
+      alert('Thank you for your message! I will get back to you soon.');
+      document.getElementById('contactForm').reset();
+      
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }, function(error) {
+      // Error
+      alert('Sorry, there was an error sending your message. Please try again or contact me directly at ta309ha@gmail.com');
+      
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
+  });
+
+  // Language Selector Functions
+  function toggleLanguageMenu() {
+    const options = document.getElementById('languageOptions');
+    const arrow = document.querySelector('.language-btn .arrow');
+    options.classList.toggle('show');
+    arrow.classList.toggle('down');
+  }
+  
+  // --- TRANSLATIONS ---
+  const translations = {
+    en: {
+      siteTitle: 'Taha Farrukh', navHome: 'Home', navMenu: 'Menu', navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navEducation: 'Education', navCertifications: 'Licenses & Certifications', navDownloads: 'Downloads', navSettings: 'Settings', modeToggleText: 'Light/Dark Mode', languageBtn: 'Language', homeTitle: 'Taha Farrukh', homeSubtitle: "Mechanical Engineering Student | NUST '28 | F1 & Automotive Enthusiast", homeAbout: 'About', homeSkills: 'Skills', homeProjects: 'Projects', homeEducation: 'Education', homeCertifications: 'Certifications', homeDownloads: 'Downloads', aboutTitle: 'About Me', aboutP1: "I'm a Mechanical Engineering student, having just completed my first year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.", aboutP2: 'Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I\'ve come to appreciate the complexity and innovation behind high-performance engineering.', aboutP3: "Lately, I've also been diving into the world of aviation — particularly aircraft and fighter jet design and manufacturing. I'm fascinated by the engineering challenges humanity has overcome to achieve controlled flight and supersonic speed.", aboutP4: "Currently, I'm building my skills through online courses in design, simulation, and programming, and I'm always eager to explore new tools and technologies that align with my interests.", aboutP5: "I'm an aspiring F1 engineer, and I'm always open to connecting with like-minded people — whether that's on LinkedIn or over email.", skillsTitle: 'Skills', projectsTitle: 'Projects', project1Desc: '3D modeling and mechanical design using AutoCAD', project2Desc: 'Innovative design challenge and engineering solution', project3Desc: 'Structural analysis and simulation using ANSYS', educationTitle: 'Education', certificationsTitle: 'Licenses & Certifications', contactTitle: 'Contact Me', contactAlt: 'Alternatively, contact me at ', contactEmail: 'ta309ha@gmail.com', labelName: 'Name', labelEmail: 'Email', labelMessage: 'Message', sendMessageBtn: 'Send Message', downloadsTitle: 'Downloads', resumeTitle: 'Resume', resumeDesc: 'My updated professional resume', resumeBtn: 'Download PDF', transcriptTitle: 'Academic Transcript', transcriptDesc: 'Official university transcript', transcriptBtn: 'Download PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Email', footerCopyright: '© 2025 Taha Farrukh'
+    },
+    ur: {
+      siteTitle: 'تہا فاروق', navHome: 'ہوم', navMenu: 'مینو', navAbout: 'تعارف', navSkills: 'مہارتیں', navProjects: 'منصوبے', navEducation: 'تعلیم', navCertifications: 'لائسنس اور سرٹیفکیٹس', navDownloads: 'ڈاؤن لوڈز', navSettings: 'سیٹنگز', modeToggleText: 'لائٹ/ڈارک موڈ', languageBtn: 'زبان', homeTitle: 'تہا فاروق', homeSubtitle: "مکینیکل انجینئرنگ کے طالب علم | نسٹ '28 | ایف 1 اور آٹوموٹیو کے شوقین", homeAbout: 'تعارف', homeSkills: 'مہارتیں', homeProjects: 'منصوبے', homeEducation: 'تعلیم', homeCertifications: 'سرٹیفکیٹس', homeDownloads: 'ڈاؤن لوڈز', aboutTitle: 'میرے بارے میں', aboutP1: "میں مکینیکل انجینئرنگ کا طالب علم ہوں، اور میں نے ابھی اپنا پہلا سال مکمل کیا ہے۔ میں آٹوموٹیو انجینئرنگ اور موٹر اسپورٹس کا بہت شوقین ہوں — خاص طور پر فارمولا 1، جسے میں نے 2015–2016 میں ریڈ بل ریسنگ اور میکس ورسٹاپن کے فین کے طور پر فالو کرنا شروع کیا۔", aboutP2: 'وقت کے ساتھ ساتھ یہ شوق ایف 1 سے آگے بڑھ کر اینڈورنس ریسنگ (جیسے لی مان) اور موٹو جی پی تک پھیل گیا ہے، جہاں میں نے ہائی پرفارمنس انجینئرنگ کی پیچیدگی اور جدت کو سراہا ہے۔', aboutP3: "حال ہی میں، میں ہوابازی کی دنیا میں بھی دلچسپی لے رہا ہوں — خاص طور پر ہوائی جہاز اور فائٹر جیٹ کے ڈیزائن اور مینوفیکچرنگ میں۔ میں انجنئرنگ کے ان چیلنجز سے متاثر ہوں جو انسانیت نے کنٹرولڈ فلائٹ اور سپرسونک اسپیڈ حاصل کرنے کے لیے عبور کیے ہیں۔", aboutP4: "اس وقت، میں آن لائن کورسز کے ذریعے ڈیزائن، سیمولیشن، اور پروگرامنگ میں اپنی مہارتیں بڑھا رہا ہوں، اور میں ہمیشہ نئے ٹولز اور ٹیکنالوجیز کو دریافت کرنے کے لیے پُر جوش ہوں جو میرے شوق سے میل کھاتے ہیں۔", aboutP5: "میں ایک ابھرتا ہوا ایف 1 انجینئر ہوں، اور میں ہمیشہ ہم خیال لوگوں سے جڑنے کے لیے تیار ہوں — چاہے وہ لنکڈ اِن پر ہو یا ای میل کے ذریعے۔", skillsTitle: 'مہارتیں', projectsTitle: 'منصوبے', educationTitle: 'تعلیم', certificationsTitle: 'لائسنس اور سرٹیفکیٹس', contactTitle: 'رابطہ کریں', contactAlt: 'یا اس ای میل پر رابطہ کریں: ', contactEmail: 'ta309ha@gmail.com', labelName: 'نام', labelEmail: 'ای میل', labelMessage: 'پیغام', sendMessageBtn: 'پیغام بھیجیں', downloadsTitle: 'ڈاؤن لوڈز', resumeTitle: 'ریزیومے', resumeDesc: 'میرا تازہ ترین پروفیشنل ریزیومے', resumeBtn: 'پی ڈی ایف ڈاؤن لوڈ کریں', transcriptTitle: 'اکیڈمک ٹرانسکرپٹ', transcriptDesc: 'یونیورسٹی کا آفیشل ٹرانسکرپٹ', transcriptBtn: 'پی ڈی ایف ڈاؤن لوڈ کریں', footerLinkedIn: 'لنکڈ اِن', footerGitHub: 'گِٹ ہب', footerEmail: 'ای میل', footerCopyright: '© 2025 تہا فاروق'
+    },
+    fr: {
+      siteTitle: 'Taha Farrukh', navHome: 'Accueil', navMenu: 'Menu', navAbout: 'À propos', navSkills: 'Compétences', navProjects: 'Projets', navEducation: 'Éducation', navCertifications: 'Licences & Certificats', navDownloads: 'Téléchargements', navSettings: 'Paramètres', modeToggleText: 'Mode Clair/Sombre', languageBtn: 'Langue', homeTitle: 'Taha Farrukh', homeSubtitle: "Étudiant en génie mécanique | NUST '28 | Passionné de F1 & Automobile", homeAbout: 'À propos', homeSkills: 'Compétences', homeProjects: 'Projets', homeEducation: 'Éducation', homeCertifications: 'Certificats', homeDownloads: 'Téléchargements', aboutTitle: 'À propos de moi', aboutP1: "Je suis étudiant en génie mécanique, venant de terminer ma première année. Je suis passionné par l'ingénierie automobile et le sport automobile depuis aussi longtemps que je me souvienne — en particulier la Formule 1, que j'ai commencé à suivre de près en 2015–2016 en tant que fan de Red Bull Racing et de Max Verstappen.", aboutP2: "Au fil des ans, cette passion s'est étendue au-delà de la F1 à l'endurance (comme Le Mans) et au MotoGP, où j'ai appris à apprécier la complexité et l'innovation de l'ingénierie de haute performance.", aboutP3: "Dernièrement, je me suis aussi plongé dans le monde de l'aviation — en particulier la conception et la fabrication d'avions et de jets de chasse. Je suis fasciné par les défis techniques que l'humanité a relevés pour atteindre le vol contrôlé et la vitesse supersonique.", aboutP4: "Actuellement, je développe mes compétences grâce à des cours en ligne en conception, simulation et programmation, et je suis toujours désireux d'explorer de nouveaux outils et technologies en accord avec mes intérêts.", aboutP5: "Je suis un ingénieur F1 en devenir, et je suis toujours ouvert à rencontrer des personnes partageant les mêmes idées — que ce soit sur LinkedIn ou par e-mail.", skillsTitle: 'Compétences', projectsTitle: 'Projets', educationTitle: 'Éducation', certificationsTitle: 'Licences & Certificats', contactTitle: 'Contactez-moi', contactAlt: 'Ou contactez-moi à ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nom', labelEmail: 'E-mail', labelMessage: 'Message', sendMessageBtn: 'Envoyer', downloadsTitle: 'Téléchargements', resumeTitle: 'CV', resumeDesc: 'Mon CV professionnel à jour', resumeBtn: 'Télécharger PDF', transcriptTitle: 'Relevé de notes', transcriptDesc: 'Relevé de notes officiel de l\'université', transcriptBtn: 'Télécharger PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'E-mail', footerCopyright: '© 2025 Taha Farrukh'
+    },
+    es: {
+      siteTitle: 'Taha Farrukh', navHome: 'Inicio', navMenu: 'Menú', navAbout: 'Acerca de', navSkills: 'Habilidades', navProjects: 'Proyectos', navEducation: 'Educación', navCertifications: 'Licencias y Certificados', navDownloads: 'Descargas', navSettings: 'Configuración', modeToggleText: 'Modo Claro/Oscuro', languageBtn: 'Idioma', homeTitle: 'Taha Farrukh', homeSubtitle: "Estudiante de Ingeniería Mecánica | NUST '28 | Apasionado de F1 y Automoción", homeAbout: 'Acerca de', homeSkills: 'Habilidades', homeProjects: 'Proyectos', homeEducation: 'Educación', homeCertifications: 'Certificados', homeDownloads: 'Descargas', aboutTitle: 'Sobre mí', aboutP1: "Soy estudiante de Ingeniería Mecánica y acabo de terminar mi primer año. Me apasiona la ingeniería automotriz y el automovilismo desde que tengo memoria, especialmente la Fórmula 1, que empecé a seguir de cerca en 2015–2016 como fan de Red Bull Racing y Max Verstappen.", aboutP2: "Con los años, esa pasión se ha expandido más allá de la F1 hacia las carreras de resistencia (como Le Mans) y MotoGP, donde he aprendido a apreciar la complejidad y la innovación de la ingeniería de alto rendimiento.", aboutP3: "Últimamente, también me he sumergido en el mundo de la aviación, especialmente en el diseño y la fabricación de aviones y cazas. Me fascinan los desafíos de ingeniería que la humanidad ha superado para lograr el vuelo controlado y la velocidad supersónica.", aboutP4: "Actualmente, estoy desarrollando mis habilidades a través de cursos en línea de diseño, simulación y programación, y siempre estoy ansioso por explorar nuevas herramientas y tecnologías que se alineen con mis intereses.", aboutP5: "Aspiro a ser ingeniero de F1 y siempre estoy abierto a conectar con personas afines, ya sea en LinkedIn o por correo electrónico.", skillsTitle: 'Habilidades', projectsTitle: 'Proyectos', educationTitle: 'Educación', certificationsTitle: 'Licencias y Certificados', contactTitle: 'Contáctame', contactAlt: 'O contáctame en ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nombre', labelEmail: 'Correo electrónico', labelMessage: 'Mensaje', sendMessageBtn: 'Enviar mensaje', downloadsTitle: 'Descargas', resumeTitle: 'Currículum', resumeDesc: 'Mi currículum profesional actualizado', resumeBtn: 'Descargar PDF', transcriptTitle: 'Certificado Académico', transcriptDesc: 'Certificado oficial de la universidad', transcriptBtn: 'Descargar PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Correo', footerCopyright: '© 2025 Taha Farrukh'
+    },
+    it: {
+      siteTitle: 'Taha Farrukh', navHome: 'Home', navMenu: 'Menu', navAbout: 'Chi sono', navSkills: 'Competenze', navProjects: 'Progetti', navEducation: 'Istruzione', navCertifications: 'Licenze e Certificati', navDownloads: 'Download', navSettings: 'Impostazioni', modeToggleText: 'Modalità Chiara/Scura', languageBtn: 'Lingua', homeTitle: 'Taha Farrukh', homeSubtitle: "Studente di Ingegneria Meccanica | NUST '28 | Appassionato di F1 e Automotive", homeAbout: 'Chi sono', homeSkills: 'Competenze', homeProjects: 'Progetti', homeEducation: 'Istruzione', homeCertifications: 'Certificati', homeDownloads: 'Download', aboutTitle: 'Chi sono', aboutP1: "Sono uno studente di ingegneria meccanica, ho appena terminato il primo anno. Sono appassionato di ingegneria automobilistica e motorsport da sempre — in particolare della Formula 1, che ho iniziato a seguire da vicino nel 2015–2016 come fan della Red Bull Racing e di Max Verstappen.", aboutP2: "Negli anni questa passione si è estesa oltre la F1 alle gare di durata (come Le Mans) e alla MotoGP, dove ho imparato ad apprezzare la complessità e l'innovazione dell'ingegneria ad alte prestazioni.", aboutP3: "Ultimamente mi sto anche immergendo nel mondo dell'aviazione — in particolare nella progettazione e produzione di aerei e caccia. Sono affascinato dalle sfide ingegneristiche che l'umanità ha superato per ottenere il volo controllato e la velocità supersonica.", aboutP4: "Attualmente sto sviluppando le mie competenze attraverso corsi online di progettazione, simulazione e programmazione, e sono sempre desideroso di esplorare nuovi strumenti e tecnologie in linea con i miei interessi.", aboutP5: "Sono un aspirante ingegnere di F1 e sono sempre aperto a connettermi con persone che la pensano allo stesso modo — sia su LinkedIn che via e-mail.", skillsTitle: 'Competenze', projectsTitle: 'Progetti', educationTitle: 'Istruzione', certificationsTitle: 'Licenze e Certificati', contactTitle: 'Contattami', contactAlt: 'Oppure contattami a ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nome', labelEmail: 'Email', labelMessage: 'Messaggio', sendMessageBtn: 'Invia messaggio', downloadsTitle: 'Download', resumeTitle: 'Curriculum', resumeDesc: 'Il mio curriculum professionale aggiornato', resumeBtn: 'Scarica PDF', transcriptTitle: 'Certificato Accademico', transcriptDesc: 'Certificato ufficiale dell\'università', transcriptBtn: 'Scarica PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Email', footerCopyright: '© 2025 Taha Farrukh'
+    }
+  };
+
+  function changeLanguage(lang) {
+    // Update active language in menu
+    document.querySelectorAll('.language-option').forEach(opt => {
+      opt.classList.toggle('active', opt.getAttribute('onclick').includes(`'${lang}'`));
+    });
+    // Close the language menu
+    toggleLanguageMenu();
+    // Update all translatable text
+    const dict = translations[lang] || translations['en'];
+    for (const key in dict) {
+      const el = document.getElementById(key);
+      if (el) {
+        if (key === 'contactAlt') {
+          el.innerHTML = dict[key] + `<span style=\"color:#aaa;\" id=\"contactEmail\">${dict['contactEmail']}</span>`;
+        } else if (key === 'languageBtn') {
+          // Only update the text node, not the arrow span
+          if (el.childNodes.length > 0) {
+            // Find the first text node
+            for (let i = 0; i < el.childNodes.length; i++) {
+              if (el.childNodes[i].nodeType === Node.TEXT_NODE) {
+                el.childNodes[i].textContent = dict[key] + ' ';
+                break;
+              }
+            }
+          }
+        } else {
+          el.textContent = dict[key];
+        }
+      }
+    }
+    // Save preference
+    localStorage.setItem('language', lang);
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const darkToggle = document.getElementById('darkModeToggle');
+    const iconToggle = document.getElementById('iconModeToggle');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const headerRight = document.getElementById('headerRight');
+    const isDark = localStorage.getItem('darkMode') === 'true';
+
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      darkToggle.checked = true;
+    } else {
+      document.body.classList.remove('dark-mode');
+      darkToggle.checked = false;
+    }
+    updateModeIcon(isDark);
+
+    darkToggle.addEventListener('change', function() {
+      toggleDarkMode(this.checked);
+    });
+    iconToggle.addEventListener('click', function() {
+      toggleDarkMode(!document.body.classList.contains('dark-mode'));
+    });
+    
+    // Mobile menu toggle functionality
+    mobileMenuToggle.addEventListener('click', function() {
+      headerRight.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (headerRight.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileMenuLinks = headerRight.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        headerRight.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!headerRight.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        headerRight.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Initialize language
+    const savedLang = localStorage.getItem('language') || 'en';
+    changeLanguage(savedLang);
+    
+    showSection('home');
+    
+    // Show scroll to top button when scrolling
+    window.addEventListener('scroll', function() {
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.visibility = 'visible';
+      } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.visibility = 'hidden';
+      }
+    });
+    
+    // Close skill popup when clicking outside content
+    document.getElementById('skillPopup').addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+
+  // Dropdown close logic for Menu
+  const menuDropdown = document.querySelector('.dropdown');
+  const menuContent = document.querySelector('.dropdown-content');
+  if (menuContent) {
+    menuContent.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuDropdown.blur && menuDropdown.blur();
+        menuDropdown.classList.remove('focus-within');
+        menuContent.style.display = 'none';
+        setTimeout(() => { menuContent.style.display = ''; }, 200);
+      });
+    });
+  }
+  // Settings dropdown - use only hover events for consistent behavior
+  (function() {
+    const settingsDropdown = document.querySelector('.settings-dropdown');
+    const settingsContent = document.querySelector('.settings-content');
+    if (settingsDropdown && settingsContent) {
+      // Show on hover
+      settingsDropdown.addEventListener('mouseenter', function() {
+        settingsContent.style.display = 'block';
+      });
+      
+      // Hide when mouse leaves the entire dropdown area
+      settingsDropdown.addEventListener('mouseleave', function() {
+        settingsContent.style.display = '';
+      });
+    }
+  })();
+
+  // Show Projects tab if ?projects is in the URL
+  if (window.location.search.includes('projects')) {
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof showSection === 'function') showSection('projects');
+    });
+  }
+</script>
+</body>
+</html>
