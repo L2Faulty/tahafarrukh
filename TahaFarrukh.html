@@ -1067,6 +1067,11 @@
       font-size: 0.9rem;
       color: rgba(255,255,255,0.8);
       margin-bottom: 10px;
+      align-items: flex-start;
+      margin-left: 8%;
+      width: 64%;
+      display: flex;
+      justify-content: flex-start;
     }
 
     /* Dark Mode Adjustments - Keep timeline exactly the same */
@@ -1942,6 +1947,21 @@
         outline-offset: 1px;
       }
     }
+
+    .umich-issuer {
+      margin-left: 2%;
+      width: 64%;
+      align-items: flex-start;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .asu-issuer {
+      margin-left: 18%;
+      width: 64%;
+      align-items: flex-start;
+      display: flex;
+      justify-content: flex-start;
+    }
   </style>
 </head>
 <body>
@@ -1956,7 +1976,6 @@
       <button class="dropbtn" id="navMenu">Menu</button>
       <div class="dropdown-content">
         <a href="#" id="navAbout" onclick="showSection('about')">About</a>
-        <a href="#" id="navSkills" onclick="showSection('skills')">Skills</a>
         <a href="#" id="navProjects" onclick="showSection('projects')">Projects</a>
         <a href="#" id="navEducation" onclick="showSection('education')">Education</a>
         <a href="#" id="navCertifications" onclick="showSection('certifications')">Licenses & Certifications</a>
@@ -2000,7 +2019,6 @@
     <p id="homeSubtitle">Mechanical Engineering Student | NUST '28 | F1 & Automotive Enthusiast</p>
     <div class="home-menu">
       <a href="#" id="homeAbout" onclick="showSection('about')">About</a>
-      <a href="#" id="homeSkills" onclick="showSection('skills')">Skills</a>
       <a href="#" id="homeProjects" onclick="showSection('projects')">Projects</a>
       <a href="#" id="homeEducation" onclick="showSection('education')">Education</a>
       <a href="#" id="homeCertifications" onclick="showSection('certifications')">Certifications</a>
@@ -2111,7 +2129,7 @@
           <div class="certification-title">
             <a href="https://www.coursera.org/account/accomplishments/verify/763X0UL2J52O" target="_blank">Python For Everybody</a>
           </div>
-          <div class="certification-issuer">University of Michigan</div>
+          <div class="certification-issuer umich-issuer">University of Michigan</div>
         </div>
       </div>
       
@@ -2121,7 +2139,7 @@
           <div class="certification-title">
             <a href="https://www.coursera.org/account/accomplishments/verify/T3PJWC86XHCY" target="_blank">Python Data Structures</a>
           </div>
-          <div class="certification-issuer">University of Michigan</div>
+          <div class="certification-issuer umich-issuer">University of Michigan</div>
         </div>
       </div>
       
@@ -2151,7 +2169,17 @@
           <div class="certification-title">
             <a href="https://www.coursera.org/account/accomplishments/verify/9MDT1GBCP3L5" target="_blank">Engineering and Product Design Processes</a>
           </div>
-          <div class="certification-issuer">Arizona State University</div>
+          <div class="certification-issuer asu-issuer">Arizona State University</div>
+        </div>
+      </div>
+      
+      <div class="certification-item">
+        <div class="certification-logo-container"><img src="umich.png" alt="University of Michigan logo" class="certification-logo"></div>
+        <div class="certification-details">
+          <div class="certification-title">
+            <a href="https://www.coursera.org/account/accomplishments/specialization/O3QHUJF7FXPE" target="_blank">AI for Mechanical Engineers</a>
+          </div>
+          <div class="certification-issuer umich-issuer">University of Michigan</div>
         </div>
       </div>
     </div>
