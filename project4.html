@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoCAD Project – Piston and Connecting Rod Assembly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --main-bg: #36454F;
+      --accent: #f5f5f5;
+      --highlight: #4a5a65;
+      --footer-bg: #36454F;
+      --blue-accent: #2196F3;
+      --card-bg: #ffffff;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--accent);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #f0f0f0;
+      --card-bg: #2a2a2a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #cccccc;
+    }
+    .back-bar {
+      display: flex;
+      align-items: center;
+      background: var(--main-bg);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 0 0 16px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .back-bar:hover { background: var(--highlight); color: white; text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .back-bar i { margin-right: 8px; font-size: 1.2em; transition: transform 0.3s ease; }
+    .back-bar:hover i { transform: translateX(-3px); }
+    .project-content {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 100px 20px 40px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .project-header { margin-bottom: 40px; max-width: 800px; }
+    .project-content h1 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+    .project-content p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; color: var(--text-secondary); line-height: 1.7; }
+    .gallery-section { margin: 40px 0 0 0; width: 100%; max-width: 900px; text-align: center; }
+    .gallery-title { font-weight: 700; font-size: 1.5rem; margin-bottom: 18px; text-align: center; }
+    .gallery-row { display: flex; gap: 18px; justify-content: center; align-items: flex-end; flex-wrap: wrap; }
+    .gallery-item { text-align: center; }
+    .gallery-img { max-width: 220px; width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 8px; }
+    .gallery-caption { font-size: 0.98rem; }
+    footer { background: var(--footer-bg); color: white; padding: 40px 20px; text-align: center; margin-top: auto; font-size: 1rem; flex-shrink: 0; }
+    .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; padding: 8px 16px; border-radius: 6px; }
+    .footer-links a:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    @media (max-width: 768px) {
+      .back-bar { padding: 12px 16px; font-size: 1rem; border-radius: 0 0 12px 0; }
+      .project-content { padding: 80px 15px 30px; min-height: auto; }
+      .project-header { margin-bottom: 30px; }
+      .project-content h1 { font-size: 2rem; margin-bottom: 15px; line-height: 1.3; }
+      .project-content p { font-size: 1rem; margin-bottom: 25px; line-height: 1.6; }
+      .gallery-section { margin: 30px 0 0 0; }
+      .gallery-img { max-width: 100%; border-radius: 8px; }
+      .gallery-caption { font-size: 0.9rem; margin-top: 12px; }
+      footer { padding: 30px 15px; font-size: 0.9rem; }
+      .footer-links { gap: 15px; margin-bottom: 15px; }
+      .footer-links a { font-size: 0.9rem; padding: 6px 12px; }
+    }
+    @media (max-width: 480px) {
+      .back-bar { padding: 10px 12px; font-size: 0.9rem; }
+      .project-content { padding: 70px 10px 25px; }
+      .project-content h1 { font-size: 1.6rem; margin-bottom: 12px; }
+      .project-content p { font-size: 0.9rem; margin-bottom: 20px; }
+      .gallery-section { margin: 20px 0 0 0; }
+      .gallery-img { border-radius: 8px; }
+      .gallery-caption { font-size: 0.8rem; margin-top: 10px; }
+      footer { padding: 25px 10px; font-size: 0.8rem; }
+      .footer-links { gap: 10px; margin-bottom: 12px; }
+      .footer-links a { font-size: 0.8rem; padding: 5px 10px; }
+    }
+    @media (max-width: 768px) and (orientation: landscape) {
+      .project-content { padding: 60px 15px 20px; }
+      .project-content h1 { font-size: 1.8rem; }
+      .project-content p { font-size: 0.95rem; }
+    }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .gallery-img { border-radius: 8px; }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .back-bar:hover { transform: none; }
+      .back-bar:active { transform: scale(0.95); }
+      .gallery-img:hover { transform: none; }
+      .gallery-img:active { transform: scale(0.98); }
+      .footer-links a:hover { transform: none; }
+      .footer-links a:active { transform: scale(0.95); }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-bar" href="TahaFarrukh.html?projects" id="backBar">
+    <i class="fas fa-arrow-left"></i>
+    <span id="backText">Back</span>
+  </a>
+  <div class="project-content">
+    <div class="project-header">
+      <h1 id="projectTitle">AutoCAD Project – Piston and Connecting Rod Assembly</h1>
+      <p id="projectDesc">To get better at mechanical design and strengthen my CAD modeling skills, I decided to create a model of an engine piston and connecting rod using AutoCAD. What really pushed me toward this project was my passion for cars, especially the world of Formula 1 and racing engineering. I’ve always been fascinated by how engines work at high speeds, and this project helped me explore that from a design perspective. I hope to one day work in the motorsports industry, and this was a small but meaningful step in that direction.<br><br>While working on the model, I focused on getting the proportions and geometry right for both the piston head and lower connecting rod, especially paying attention to how they align. Even though this was a simple project, it gave me a better understanding of how important these components are in a high-performance engine — especially when precision and durability are critical.<br><br>To clearly show the overall shape and structure, I’ve attached views that help visualize the model from different angles. This project helped me connect my interest in cars with real mechanical design work and made CAD feel much more practical and relevant.</p>
+    </div>
+    <div class="gallery-section">
+      <div class="gallery-title">Piston:</div>
+      <div class="gallery-row">
+        <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+          <img src="iso piston.png" alt="piston isometric view" class="gallery-img" />
+          <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Isometric View</div>
+        </div>
+        <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+          <img src="side piston.png" alt="piston side view" class="gallery-img" />
+          <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Side View</div>
+        </div>
+        <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+          <img src="front piston.png" alt="piston front view" class="gallery-img" />
+          <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Front View</div>
+        </div>
+      </div>
+      <div class="gallery-title" style="margin-top:40px;">Connecting Rod:</div>
+      <div class="gallery-row">
+          <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+            <img src="iso conrod.png" alt="connecting rod isometric view" class="gallery-img" />
+            <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Isometric View</div>
+          </div>
+          <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+            <img src="side conrod.png" alt="connecting rod side view" class="gallery-img" />
+            <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Side View</div>
+          </div>
+          <div class="gallery-item" style="background:var(--card-bg);padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);margin:8px 0;max-width:260px;width:100%;display:flex;flex-direction:column;align-items:center;">
+            <img src="top conrod.png" alt="connecting rod top view" class="gallery-img" />
+            <div class="gallery-caption" style="font-style:italic;font-size:1rem;font-family:'Inter',sans-serif;margin-top:16px;">Top View</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
+      <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
+      <a href="TahaFarrukh.html#contact" id="footerEmail">Email</a>
+    </div>
+    <div id="footerCopyright">© 2025 Taha Farrukh</div>
+  </footer>
+  <script>
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+    // --- TRANSLATIONS ---
+    const translations = {
+      en: {
+        backText: 'Back',
+        projectTitle: 'AutoCAD Project – Piston and Connecting Rod Assembly',
+        projectDesc: `To get better at mechanical design and strengthen my CAD modeling skills, I decided to create a model of an engine piston and connecting rod using AutoCAD. What really pushed me toward this project was my passion for cars, especially the world of Formula 1 and racing engineering. I’ve always been fascinated by how engines work at high speeds, and this project helped me explore that from a design perspective. I hope to one day work in the motorsports industry, and this was a small but meaningful step in that direction.<br><br>While working on the model, I focused on getting the proportions and geometry right for both the piston head and lower connecting rod, especially paying attention to how they align. Even though this was a simple project, it gave me a better understanding of how important these components are in a high-performance engine — especially when precision and durability are critical.<br><br>To clearly show the overall shape and structure, I’ve attached views that help visualize the model from different angles. This project helped me connect my interest in cars with real mechanical design work and made CAD feel much more practical and relevant.`,
+        footerLinkedIn: 'LinkedIn',
+        footerGitHub: 'GitHub',
+        footerEmail: 'Email',
+        footerCopyright: '© 2025 Taha Farrukh'
+      }
+      // Add other languages if needed
+    };
+    const lang = localStorage.getItem('language') || 'en';
+    const dict = translations[lang] || translations['en'];
+    for (const key in dict) {
+      const el = document.getElementById(key);
+      if (el) {
+        if (key === 'projectDesc') {
+          el.innerHTML = dict[key];
+        } else {
+          el.textContent = dict[key];
+        }
+      }
+    }
+  </script>
+</body>
+</html> 
