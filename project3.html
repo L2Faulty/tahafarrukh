@@ -394,7 +394,7 @@
   </style>
 </head>
 <body>
-  <a class="back-bar" href="TahaFarrukh.html?projects" id="backBar">
+  <a class="back-bar" href="../TahaFarrukh.html?projects" id="backBar">
     <i class="fas fa-arrow-left"></i>
     <span id="backText">Back</span>
   </a>
@@ -427,132 +427,64 @@
   
   <footer id="footer">
     <div class="footer-links">
-      <a href="https://linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
       <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
-      <a href="TahaFarrukh.html#contact" id="footerEmail">Email</a>
+      <a href="../TahaFarrukh.html#contact" id="footerEmail">Email</a>
     </div>
     <div id="footerCopyright">© 2025 Taha Farrukh</div>
   </footer>
   
-  <script>
-    // Sync dark mode
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-    
-    // --- TRANSLATIONS ---
-    const translations = {
-      en: {
-        backText: 'Back',
-        projectTitle: 'ANSYS Mechanical – Basic Truss Analysis',
-        projectDesc: `For this project, I carried out a static structural analysis of a 2D truss using ANSYS Mechanical. The truss was modeled using line elements, which represent the individual members. To simulate real-world conditions, I applied pin and roller supports to the appropriate joints and added a load at a specific point in the structure.<br><br>After setting up the model, I generated the mesh and ran the simulation to analyze how the structure would respond. The main goal was to calculate the support reactions and the internal forces in each truss member. This helped confirm whether the structure was in equilibrium under the applied loading conditions.<br><br>Working on this helped me understand how theoretical concepts like equilibrium and force distribution are applied in real simulations. It also gave me hands-on experience with using ANSYS for structural analysis, which was great for connecting what I've learned in mechanics to actual engineering tools.`,
-        caption1: 'Static Reaction at Roller Support',
-        caption2: 'Static Reaction at Pin Support',
-        caption3: 'Truss Member Force Evaluation',
-        caption4: 'Modeling of Truss Geometry',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Email',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      ur: {
-        backText: 'واپس',
-        projectTitle: 'ANSYS میکینیکل – بنیادی ٹرس اینالیسس',
-        projectDesc: `اس پروجیکٹ میں، میں نے ANSYS میکینیکل کا استعمال کرتے ہوئے 2D ٹرس کا سٹیٹک اسٹرکچرل اینالیسس کیا۔ ٹرس کو لائن ایلیمنٹس کے ذریعے ماڈل کیا گیا، جو ہر ممبر کی نمائندگی کرتے ہیں۔ حقیقی حالات کی نقل کے لیے، میں نے مناسب جوڑوں پر پن اور رولر سپورٹس لگائیں اور ساخت کے ایک مخصوص مقام پر لوڈ ڈالا۔<br><br>ماڈل سیٹ اپ کرنے کے بعد، میں نے میش تیار کی اور سمیولیشن چلائی تاکہ یہ دیکھا جا سکے کہ ساخت کیسے ردعمل دیتی ہے۔ بنیادی مقصد سپورٹ ری ایکشنز اور ہر ٹرس ممبر میں اندرونی قوتوں کا حساب لگانا تھا۔ اس سے یہ تصدیق کرنے میں مدد ملی کہ ساخت دیے گئے لوڈنگ کنڈیشنز کے تحت توازن میں ہے یا نہیں۔<br><br>اس پر کام کرنے سے مجھے یہ سمجھنے میں مدد ملی کہ نظریاتی تصورات جیسے توازن اور قوت کی تقسیم حقیقی سمیولیشنز میں کیسے لاگو ہوتے ہیں۔ اس کے علاوہ مجھے ANSYS کے ذریعے اسٹرکچرل اینالیسس کا عملی تجربہ بھی حاصل ہوا، جو مکینکس میں سیکھی گئی باتوں کو انجینئرنگ ٹولز سے جوڑنے کے لیے بہت مفید تھا۔`,
-        caption1: 'رولر سپورٹ پر سٹیٹک ری ایکشن',
-        caption2: 'پن سپورٹ پر سٹیٹک ری ایکشن',
-        caption3: 'ٹرس ممبر فورس ایویلیوایشن',
-        caption4: 'ٹرس جیومیٹری کی ماڈلنگ',
-        footerLinkedIn: 'لنکڈ اِن',
-        footerGitHub: 'گِٹ ہب',
-        footerEmail: 'ای میل',
-        footerCopyright: '© 2025 تہا فاروق'
-      },
-      fr: {
-        backText: 'Retour',
-        projectTitle: 'ANSYS Mechanical – Analyse de base de la ferme',
-        projectDesc: `Pour ce projet, j'ai réalisé une analyse structurelle statique d'une ferme 2D à l'aide d'ANSYS Mechanical. La ferme a été modélisée à l'aide d'éléments linéaires représentant les différents membres. Pour simuler des conditions réelles, j'ai appliqué des appuis à broche et à rouleau aux nœuds appropriés et ajouté une charge à un point spécifique de la structure.<br><br>Après avoir configuré le modèle, j'ai généré le maillage et lancé la simulation pour analyser la réponse de la structure. L'objectif principal était de calculer les réactions d'appui et les forces internes dans chaque membre de la ferme. Cela a permis de vérifier si la structure était en équilibre sous les charges appliquées.<br><br>Ce travail m'a aidé à comprendre comment des concepts théoriques comme l'équilibre et la distribution des forces sont appliqués dans des simulations réelles. Il m'a aussi donné une expérience pratique de l'utilisation d'ANSYS pour l'analyse structurelle, ce qui m'a permis de relier la théorie à la pratique en ingénierie.`,
-        caption1: 'Réaction statique au support à rouleau',
-        caption2: 'Réaction statique au support à broche',
-        caption3: 'Évaluation de la force dans les membres de la ferme',
-        caption4: 'Modélisation de la géométrie de la ferme',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'E-mail',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      es: {
-        backText: 'Atrás',
-        projectTitle: 'ANSYS Mechanical – Análisis básico de cerchas',
-        projectDesc: `Para este proyecto, realicé un análisis estructural estático de una cercha 2D utilizando ANSYS Mechanical. La cercha se modeló usando elementos lineales, que representan los miembros individuales. Para simular condiciones reales, apliqué apoyos de pasador y rodillo a las uniones adecuadas y añadí una carga en un punto específico de la estructura.<br><br>Después de configurar el modelo, generé la malla y ejecuté la simulación para analizar cómo respondería la estructura. El objetivo principal era calcular las reacciones de apoyo y las fuerzas internas en cada miembro de la cercha. Esto ayudó a confirmar si la estructura estaba en equilibrio bajo las condiciones de carga aplicadas.<br><br>Trabajar en esto me ayudó a comprender cómo se aplican conceptos teóricos como el equilibrio y la distribución de fuerzas en simulaciones reales. También me dio experiencia práctica usando ANSYS para análisis estructurales, lo cual fue genial para conectar lo aprendido en mecánica con herramientas de ingeniería reales.`,
-        caption1: 'Reacción estática en el apoyo de rodillo',
-        caption2: 'Reacción estática en el apoyo de pasador',
-        caption3: 'Evaluación de la fuerza en los miembros de la cercha',
-        caption4: 'Modelado de la geometría de la cercha',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Correo',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      it: {
-        backText: 'Indietro',
-        projectTitle: 'ANSYS Mechanical – Analisi base della trave reticolare',
-        projectDesc: `Per questo progetto, ho effettuato un'analisi strutturale statica di una trave reticolare 2D utilizzando ANSYS Mechanical. La trave è stata modellata usando elementi lineari, che rappresentano i singoli membri. Per simulare condizioni reali, ho applicato supporti a perno e a rullo ai giunti appropriati e aggiunto un carico in un punto specifico della struttura.<br><br>Dopo aver configurato il modello, ho generato la mesh ed eseguito la simulazione per analizzare come la struttura avrebbe risposto. L'obiettivo principale era calcolare le reazioni di supporto e le forze interne in ciascun membro della trave. Questo ha aiutato a confermare se la struttura fosse in equilibrio sotto le condizioni di carico applicate.<br><br>Lavorare su questo mi ha aiutato a capire come concetti teorici come l'equilibrio e la distribuzione delle forze vengano applicati nelle simulazioni reali. Mi ha anche dato esperienza pratica nell'uso di ANSYS per l'analisi strutturale, il che è stato ottimo per collegare ciò che ho imparato in meccanica agli strumenti ingegneristici reali.`,
-        caption1: 'Reazione statica al supporto a rullo',
-        caption2: 'Reazione statica al supporto a perno',
-        caption3: 'Valutazione della forza nei membri della trave',
-        caption4: 'Modellazione della geometria della trave',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Email',
-        footerCopyright: '© 2025 Taha Farrukh'
-      }
-    };
-    
-    // Apply translations
-    const lang = localStorage.getItem('language') || 'en';
-    const dict = translations[lang] || translations['en'];
-    
-    for (const key in dict) {
-      const el = document.getElementById(key);
-      if (el) {
-        if (key === 'projectDesc') {
-          el.innerHTML = dict[key];
-        } else {
-          el.textContent = dict[key];
+        <script>
+        // Sync dark mode with main site
+        function syncDarkMode() {
+          const isDark = localStorage.getItem('darkMode') === 'true';
+          document.body.classList.toggle('dark-mode', isDark);
         }
-      }
-    }
-    
-    // Image loading error handling
-    const galleryImages = document.querySelectorAll('.gallery-image');
-    galleryImages.forEach((img, index) => {
-      img.addEventListener('error', function() {
-        this.style.display = 'none';
-        const caption = this.nextElementSibling;
-        caption.textContent = 'Image not available';
-        caption.style.color = '#999';
-      });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        
+        // Initial sync
+        syncDarkMode();
+        
+        // Listen for dark mode changes from main site
+        window.addEventListener('storage', function(e) {
+          if (e.key === 'darkMode') {
+            syncDarkMode();
+          }
+        });
+        
+        // Listen for custom dark mode events
+        window.addEventListener('darkModeChanged', function(e) {
+          syncDarkMode();
+        });
+        
+        // Image loading error handling
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        galleryImages.forEach((img, index) => {
+          img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const caption = this.nextElementSibling;
+            caption.textContent = 'Image not available';
+            caption.style.color = '#999';
           });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+        
+        // If returning to main site with ?projects, show Projects tab
+        if (window.location.search.includes('projects')) {
+          window.location = '../TahaFarrukh.html?projects';
         }
-      });
-    });
-    
-    // If returning to main site with ?projects, show Projects tab
-    if (window.location.search.includes('projects')) {
-      window.location = 'TahaFarrukh.html?projects';
-    }
-  </script>
+      </script>
 </body>
 </html> 

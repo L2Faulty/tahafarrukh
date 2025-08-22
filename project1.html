@@ -385,115 +385,62 @@
   
   <footer id="footer">
     <div class="footer-links">
-      <a href="https://linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
       <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
       <a href="TahaFarrukh.html#contact" id="footerEmail">Email</a>
     </div>
     <div id="footerCopyright">© 2025 Taha Farrukh</div>
   </footer>
   
-  <script>
-    // Sync dark mode
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-    
-    // --- TRANSLATIONS ---
-    const translations = {
-      en: {
-        backText: 'Back',
-        projectTitle: 'AutoCAD Project – 4-Bolt Bearing Block',
-        projectDesc: `To get better at mechanical design and improve my CAD skills, I decided to model a 4-bolt bearing housing using AutoCAD. It was a really useful exercise, especially because these types of bearing units are commonly used in machines to support rotating shafts — where getting the alignment and precision right is super important.<br><br>While working on it, I paid close attention to things like the geometry, the layout of the mounting holes, and making sure the overall design was symmetrical. All of that plays a key role in making sure the part functions properly and can actually be manufactured without issues.<br><br>This project gave me a better understanding of how real components are designed — not just for how they work, but also for how easily they can be made. It's definitely helped me see the practical side of CAD modeling and mechanical design a lot more clearly.`,
-        projectCaption: '4-Bolt Bearing 3D Model',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Email',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      ur: {
-        backText: 'واپس',
-        projectTitle: 'آٹوکیڈ پروجیکٹ – 4-بولٹ بیئرنگ بلاک',
-        projectDesc: `مکینیکل ڈیزائن میں بہتری اور اپنی CAD مہارتوں کو بہتر بنانے کے لیے، میں نے آٹوکیڈ میں 4-بولٹ بیئرنگ ہاؤسنگ ماڈل کرنے کا فیصلہ کیا۔ یہ ایک بہت مفید مشق تھی، خاص طور پر کیونکہ اس قسم کی بیئرنگ یونٹس مشینوں میں گھومتے ہوئے شافٹ کو سپورٹ کرنے کے لیے عام طور پر استعمال ہوتی ہیں — جہاں سیدھ اور درستگی بہت اہم ہوتی ہے۔<br><br>اس پر کام کرتے ہوئے، میں نے جیومیٹری، ماؤنٹنگ ہولز کی ترتیب، اور مجموعی ڈیزائن کی ہم آہنگی پر خاص توجہ دی۔ یہ سب اس بات کو یقینی بنانے میں اہم کردار ادا کرتے ہیں کہ پرزہ صحیح کام کرے اور اسے بغیر کسی مسئلے کے تیار کیا جا سکے۔<br><br>اس پروجیکٹ نے مجھے یہ سمجھنے میں مدد دی کہ اصل پرزے کیسے ڈیزائن کیے جاتے ہیں — نہ صرف ان کے کام کے لیے، بلکہ اس کے لیے بھی کہ انہیں کتنی آسانی سے بنایا جا سکتا ہے۔ اس سے مجھے CAD ماڈلنگ اور مکینیکل ڈیزائن کی عملی اہمیت زیادہ واضح طور پر نظر آئی۔`,
-        projectCaption: '4-بولٹ بیئرنگ 3D ماڈل',
-        footerLinkedIn: 'لنکڈ اِن',
-        footerGitHub: 'گِٹ ہب',
-        footerEmail: 'ای میل',
-        footerCopyright: '© 2025 تہا فاروق'
-      },
-      fr: {
-        backText: 'Retour',
-        projectTitle: 'Projet AutoCAD – Palier à 4 boulons',
-        projectDesc: `Pour améliorer mes compétences en conception mécanique et en CAO, j'ai décidé de modéliser un palier à 4 boulons avec AutoCAD. Ce fut un exercice très utile, surtout parce que ces types d'unités de palier sont couramment utilisées dans les machines pour supporter des arbres rotatifs — où l'alignement et la précision sont essentiels.<br><br>Pendant le projet, j'ai prêté une attention particulière à la géométrie, à la disposition des trous de montage et à la symétrie du design. Tout cela joue un rôle clé pour garantir que la pièce fonctionne correctement et peut être fabriquée sans problème.<br><br>Ce projet m'a permis de mieux comprendre comment les composants réels sont conçus — non seulement pour leur fonctionnement, mais aussi pour leur facilité de fabrication. Cela m'a vraiment aidé à voir plus clairement l'aspect pratique de la modélisation CAO et de la conception mécanique.`,
-        projectCaption: 'Modèle 3D palier à 4 boulons',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'E-mail',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      es: {
-        backText: 'Atrás',
-        projectTitle: 'Proyecto AutoCAD – Bloque de Cojinete de 4 Pernos',
-        projectDesc: `Para mejorar en el diseño mecánico y mis habilidades de CAD, decidí modelar una carcasa de cojinete de 4 pernos usando AutoCAD. Fue un ejercicio muy útil, especialmente porque este tipo de unidades de cojinete se usan comúnmente en máquinas para soportar ejes giratorios — donde la alineación y la precisión son muy importantes.<br><br>Mientras trabajaba en ello, presté mucha atención a la geometría, la disposición de los orificios de montaje y asegurarme de que el diseño general fuera simétrico. Todo eso juega un papel clave para asegurar que la pieza funcione correctamente y pueda fabricarse sin problemas.<br><br>Este proyecto me dio una mejor comprensión de cómo se diseñan los componentes reales — no solo para su funcionamiento, sino también para su facilidad de fabricación. Sin duda me ayudó a ver más claramente el lado práctico del modelado CAD y el diseño mecánico.`,
-        projectCaption: 'Modelo 3D de cojinete de 4 pernos',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Correo',
-        footerCopyright: '© 2025 Taha Farrukh'
-      },
-      it: {
-        backText: 'Indietro',
-        projectTitle: 'Progetto AutoCAD – Blocco Cuscinetto a 4 Bulloni',
-        projectDesc: `Per migliorare nella progettazione meccanica e nelle mie competenze CAD, ho deciso di modellare un alloggiamento per cuscinetto a 4 bulloni usando AutoCAD. È stato un esercizio molto utile, soprattutto perché questi tipi di unità cuscinetto sono comunemente usati nelle macchine per supportare alberi rotanti — dove l'allineamento e la precisione sono fondamentali.<br><br>Lavorandoci, ho prestato molta attenzione alla geometria, alla disposizione dei fori di montaggio e ad assicurarmi che il design complessivo fosse simmetrico. Tutto ciò gioca un ruolo chiave per garantire che il pezzo funzioni correttamente e possa essere effettivamente realizzato senza problemi.<br><br>Questo progetto mi ha dato una migliore comprensione di come vengono progettati i componenti reali — non solo per il loro funzionamento, ma anche per la facilità di produzione. Mi ha sicuramente aiutato a vedere più chiaramente il lato pratico della modellazione CAD e della progettazione meccanica.`,
-        projectCaption: 'Modello 3D cuscinetto a 4 bulloni',
-        footerLinkedIn: 'LinkedIn',
-        footerGitHub: 'GitHub',
-        footerEmail: 'Email',
-        footerCopyright: '© 2025 Taha Farrukh'
-      }
-    };
-    
-    // Apply translations
-    const lang = localStorage.getItem('language') || 'en';
-    const dict = translations[lang] || translations['en'];
-    
-    for (const key in dict) {
-      const el = document.getElementById(key);
-      if (el) {
-        if (key === 'projectDesc') {
-          el.innerHTML = dict[key];
-        } else {
-          el.textContent = dict[key];
+        <script>
+        // Sync dark mode with main site
+        function syncDarkMode() {
+          const isDark = localStorage.getItem('darkMode') === 'true';
+          document.body.classList.toggle('dark-mode', isDark);
         }
-      }
-    }
-    
-    // Image loading error handling
-    const projectImage = document.getElementById('projectImage');
-    projectImage.addEventListener('error', function() {
-      this.style.display = 'none';
-      const caption = document.getElementById('projectCaption');
-      caption.textContent = 'Image not available';
-      caption.style.color = '#999';
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        
+        // Initial sync
+        syncDarkMode();
+        
+        // Listen for dark mode changes from main site
+        window.addEventListener('storage', function(e) {
+          if (e.key === 'darkMode') {
+            syncDarkMode();
+          }
+        });
+        
+        // Listen for custom dark mode events
+        window.addEventListener('darkModeChanged', function(e) {
+          syncDarkMode();
+        });
+        
+        // Image loading error handling
+        const projectImage = document.getElementById('projectImage');
+        projectImage.addEventListener('error', function() {
+          this.style.display = 'none';
+          const caption = document.getElementById('projectCaption');
+          caption.textContent = 'Image not available';
+          caption.style.color = '#999';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
           });
+        });
+        
+        // If returning to main site with ?projects, show Projects tab
+        if (window.location.search.includes('projects')) {
+          window.location = '../TahaFarrukh.html?projects';
         }
-      });
-    });
-    
-    // If returning to main site with ?projects, show Projects tab
-    if (window.location.search.includes('projects')) {
-      window.location = 'TahaFarrukh.html?projects';
-    }
-  </script>
+      </script>
 </body>
 </html> 

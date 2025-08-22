@@ -777,67 +777,7 @@
       transition: all 0.3s ease;
     }
 
-    /* Language Selector Styles */
-    .language-selector {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .language-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: none;
-      border: none;
-      color: white;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      padding: 8px 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .language-options {
-      display: none;
-      margin-top: 5px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .language-options.show {
-      display: block;
-      max-height: 300px;
-    }
-    
-    .language-option {
-      display: block;
-      color: white;
-      padding: 8px 0;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-    
-    .language-option:hover {
-      color: var(--blue-accent);
-      transform: translateX(5px);
-    }
-    
-    .language-option.active {
-      color: white;
-      font-weight: 600;
-    }
-    
-    .arrow {
-      transition: all 0.3s ease;
-    }
-    
-    .arrow.down {
-      transform: rotate(90deg);
-    }
+
 
     /* Updated Education Timeline Styles with Blue Line and Dots */
     .timeline {
@@ -1160,9 +1100,7 @@
         gap: 15px;
       }
       
-      .language-selector {
-        margin-top: 20px;
-      }
+
       
       .header-left {
         font-size: 1.3rem;
@@ -1995,19 +1933,7 @@
             <i id="modeIcon" class="fas fa-moon"></i>
           </button>
         </div>
-        <div class="language-selector">
-          <button class="language-btn" onclick="toggleLanguageMenu()" id="languageBtn">
-            Language
-            <span class="arrow">→</span>
-          </button>
-          <div class="language-options" id="languageOptions">
-            <a href="#" class="language-option active" onclick="changeLanguage('en')">English</a>
-            <a href="#" class="language-option" onclick="changeLanguage('ur')">Urdu</a>
-            <a href="#" class="language-option" onclick="changeLanguage('fr')">Français</a>
-            <a href="#" class="language-option" onclick="changeLanguage('es')">Español</a>
-            <a href="#" class="language-option" onclick="changeLanguage('it')">Italiano</a>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -2067,30 +1993,24 @@
   <section id="projects" class="hidden-section">
     <h2 id="projectsTitle">Projects</h2>
     <div class="projects-container">
-      <a class="project-card" href="project1.html">
-        <div class="project-icon">
-          <i class="fas fa-cube"></i>
-        </div>
-        <h3>AutoCAD Project – 4-Bolt Bearing Block</h3>
-      </a>
-      <a class="project-card" href="project2.html">
-        <div class="project-icon">
-          <i class="fas fa-lightbulb"></i>
-        </div>
-        <h3>ASME – Feynman's Trap Design Challenge</h3>
-      </a>
-      <a class="project-card" href="project3.html">
-        <div class="project-icon">
-          <i class="fas fa-cogs"></i>
-        </div>
-        <h3>ANSYS Mechanical – Basic Truss Analysis</h3>
-      </a>
-      <a class="project-card" href="project4.html">
-        <div class="project-icon">
-          <i class="fas fa-tools"></i>
-        </div>
-        <h3>AutoCAD Project – Piston and Connecting Rod Assembly</h3>
-      </a>
+                <a class="project-card" href="project4/project4.html">
+            <div class="project-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>AutoCAD Project – V8 Bottom End Assembly</h3>
+          </a>
+          <a class="project-card" href="project2/project2.html">
+            <div class="project-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>ASME – Feynman's Trap Design Challenge</h3>
+          </a>
+          <a class="project-card" href="project3/project3.html">
+            <div class="project-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>ANSYS Mechanical – Basic Truss Analysis</h3>
+          </a>
     </div>
   </section>
   
@@ -2233,7 +2153,7 @@
   
   <footer id="footer" style="position:relative;bottom:0;width:100%;background:var(--footer-bg);color:white;padding:40px 20px;text-align:center;margin-top:auto;font-size:1rem;flex-shrink:0;z-index:10;">
     <div class="footer-links">
-      <a href="https://linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
       <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
       <a href="#" onclick="showSection('contact')" id="footerEmail">Email</a>
     </div>
@@ -2257,37 +2177,21 @@
 
 <section id="project-piston-conrod" class="hidden-section" style="padding:0;">
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:100%;padding:100px 20px 40px;max-width:1200px;margin:0 auto;">
-    <h2 style="font-size:2.8rem;margin-bottom:20px;font-weight:700;">AutoCAD Project – Piston and Connecting Rod Assembly</h2>
-    <p style="font-size:1.2rem;max-width:800px;margin:0 auto 30px;color:#666;line-height:1.7;font-family:'Inter',sans-serif;">To get better at mechanical design and strengthen my CAD modeling skills, I decided to create a model of an engine piston and connecting rod using AutoCAD. What really pushed me toward this project was my passion for cars, especially the world of Formula 1 and racing engineering. I've always been fascinated by how engines work at high speeds, and this project helped me explore that from a design perspective. I hope to one day work in the motorsports industry, and this was a small but meaningful step in that direction.<br><br>While working on the model, I focused on getting the proportions and geometry right for both the piston head and lower connecting rod, especially paying attention to how they align. Even though this was a simple project, it gave me a better understanding of how important these components are in a high-performance engine — especially when precision and durability are critical.<br><br>To clearly show the overall shape and structure, I've attached views that help visualize the model from different angles. This project helped me connect my interest in cars with real mechanical design work and made CAD feel much more practical and relevant.</p>
+    <h2 style="font-size:2.8rem;margin-bottom:20px;font-weight:700;">AutoCAD Project – V8 Bottom End Assembly</h2>
+    <p style="font-size:1.2rem;max-width:800px;margin:0 auto 30px;color:#666;line-height:1.7;font-family:'Inter',sans-serif;">To sharpen my mechanical design skills and get more hands-on practice with CAD, I decided to create a detailed model of an engine piston, connecting rod, and crankshaft using AutoCAD. My passion for cars — especially the engineering behind Formula 1 and other racing series — really motivated me to take on this project.<br><br>For the engine specifications, my model was setup with a 90 mm bore, 70 mm stroke, and 8 cylinders, which together give a displacement of around 3.6 liters. While modeling, I focused on how the piston and connecting rod interact with the crankshaft, ensuring the geometry and alignment reflected real-world mechanics.<br><br>What stood out to me was how critical these relationships are for engine efficiency and durability, especially in high-performance applications. This project connected my enthusiasm for cars with real mechanical design work, making CAD feel even more practical and directly tied to motorsport engineering.</p>
     <div style="width:100%;max-width:900px;text-align:center;margin:40px 0 0 0;">
-      <div style="font-weight:700;font-size:1.5rem;margin-bottom:18px;text-align:center;">Piston:</div>
       <div style="display:flex;gap:18px;justify-content:center;align-items:flex-end;flex-wrap:wrap;">
         <div style="text-align:center;">
-          <img src="piston-front.png" alt="Piston Front View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Front View</div>
+          <img src="project4/assembly.png" alt="Piston, Rod and Crankshaft Assembly" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
+          <div style="font-size:0.98rem;">Piston, Rod and Crankshaft Assembly</div>
         </div>
         <div style="text-align:center;">
-          <img src="piston-side.png" alt="Piston Side View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Side View</div>
+          <img src="project4/crankshaft.png" alt="Crankshaft Model" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
+          <div style="font-size:0.98rem;">Crankshaft Model</div>
         </div>
         <div style="text-align:center;">
-          <img src="piston-iso.png" alt="Piston Isometric View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Isometric View</div>
-        </div>
-      </div>
-      <div style="font-weight:700;font-size:1.5rem;margin-top:40px;margin-bottom:18px;text-align:center;">Connecting Rod:</div>
-      <div style="display:flex;gap:18px;justify-content:center;align-items:flex-end;flex-wrap:wrap;">
-        <div style="text-align:center;">
-          <img src="conrod-top.png" alt="Connecting Rod Top View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Top View</div>
-        </div>
-        <div style="text-align:center;">
-          <img src="conrod-side.png" alt="Connecting Rod Side View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Side View</div>
-        </div>
-        <div style="text-align:center;">
-          <img src="conrod-iso.png" alt="Connecting Rod Isometric View" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
-          <div style="font-size:0.98rem;">Isometric View</div>
+          <img src="project4/pistonconrod.png" alt="Piston and Connecting Rod Assembly" style="max-width:220px;width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:8px;" />
+          <div style="font-size:0.98rem;">Piston and Connecting Rod Assembly</div>
         </div>
       </div>
     </div>
@@ -2383,6 +2287,9 @@
     localStorage.setItem('darkMode', isDark);
     document.getElementById('darkModeToggle').checked = isDark;
     updateModeIcon(isDark);
+    
+    // Dispatch a custom event to notify other pages about the dark mode change
+    window.dispatchEvent(new CustomEvent('darkModeChanged', { detail: { isDark } }));
   }
 
   function updateModeIcon(isDark) {
@@ -2523,66 +2430,9 @@
     });
   });
 
-  // Language Selector Functions
-  function toggleLanguageMenu() {
-    const options = document.getElementById('languageOptions');
-    const arrow = document.querySelector('.language-btn .arrow');
-    options.classList.toggle('show');
-    arrow.classList.toggle('down');
-  }
-  
-  // --- TRANSLATIONS ---
-  const translations = {
-    en: {
-      siteTitle: 'Taha Farrukh', navHome: 'Home', navMenu: 'Menu', navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navEducation: 'Education', navCertifications: 'Licenses & Certifications', navDownloads: 'Downloads', navSettings: 'Settings', modeToggleText: 'Light/Dark Mode', languageBtn: 'Language', homeTitle: 'Taha Farrukh', homeSubtitle: "Mechanical Engineering Student | NUST '28 | F1 & Automotive Enthusiast", homeAbout: 'About', homeSkills: 'Skills', homeProjects: 'Projects', homeEducation: 'Education', homeCertifications: 'Certifications', homeDownloads: 'Downloads', aboutTitle: 'About Me', aboutP1: "I'm a Mechanical Engineering student, having just completed my first year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.", aboutP2: 'Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I\'ve come to appreciate the complexity and innovation behind high-performance engineering.', aboutP3: "Lately, I've also been diving into the world of aviation — particularly aircraft and fighter jet design and manufacturing. I'm fascinated by the engineering challenges humanity has overcome to achieve controlled flight and supersonic speed.", aboutP4: "Currently, I'm building my skills through online courses in design, simulation, and programming, and I'm always eager to explore new tools and technologies that align with my interests.", aboutP5: "I'm an aspiring F1 engineer, and I'm always open to connecting with like-minded people — whether that's on LinkedIn or over email.", skillsTitle: 'Skills', projectsTitle: 'Projects', project1Desc: '3D modeling and mechanical design using AutoCAD', project2Desc: 'Innovative design challenge and engineering solution', project3Desc: 'Structural analysis and simulation using ANSYS', educationTitle: 'Education', certificationsTitle: 'Licenses & Certifications', contactTitle: 'Contact Me', contactAlt: 'Alternatively, contact me at ', contactEmail: 'ta309ha@gmail.com', labelName: 'Name', labelEmail: 'Email', labelMessage: 'Message', sendMessageBtn: 'Send Message', downloadsTitle: 'Downloads', resumeTitle: 'Resume', resumeDesc: 'My updated professional resume', resumeBtn: 'Download PDF', transcriptTitle: 'Academic Transcript', transcriptDesc: 'Official university transcript', transcriptBtn: 'Download PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Email', footerCopyright: '© 2025 Taha Farrukh'
-    },
-    ur: {
-      siteTitle: 'تہا فاروق', navHome: 'ہوم', navMenu: 'مینو', navAbout: 'تعارف', navSkills: 'مہارتیں', navProjects: 'منصوبے', navEducation: 'تعلیم', navCertifications: 'لائسنس اور سرٹیفکیٹس', navDownloads: 'ڈاؤن لوڈز', navSettings: 'سیٹنگز', modeToggleText: 'لائٹ/ڈارک موڈ', languageBtn: 'زبان', homeTitle: 'تہا فاروق', homeSubtitle: "مکینیکل انجینئرنگ کے طالب علم | نسٹ '28 | ایف 1 اور آٹوموٹیو کے شوقین", homeAbout: 'تعارف', homeSkills: 'مہارتیں', homeProjects: 'منصوبے', homeEducation: 'تعلیم', homeCertifications: 'سرٹیفکیٹس', homeDownloads: 'ڈاؤن لوڈز', aboutTitle: 'میرے بارے میں', aboutP1: "میں مکینیکل انجینئرنگ کا طالب علم ہوں، اور میں نے ابھی اپنا پہلا سال مکمل کیا ہے۔ میں آٹوموٹیو انجینئرنگ اور موٹر اسپورٹس کا بہت شوقین ہوں — خاص طور پر فارمولا 1، جسے میں نے 2015–2016 میں ریڈ بل ریسنگ اور میکس ورسٹاپن کے فین کے طور پر فالو کرنا شروع کیا۔", aboutP2: 'وقت کے ساتھ ساتھ یہ شوق ایف 1 سے آگے بڑھ کر اینڈورنس ریسنگ (جیسے لی مان) اور موٹو جی پی تک پھیل گیا ہے، جہاں میں نے ہائی پرفارمنس انجینئرنگ کی پیچیدگی اور جدت کو سراہا ہے۔', aboutP3: "حال ہی میں، میں ہوابازی کی دنیا میں بھی دلچسپی لے رہا ہوں — خاص طور پر ہوائی جہاز اور فائٹر جیٹ کے ڈیزائن اور مینوفیکچرنگ میں۔ میں انجنئرنگ کے ان چیلنجز سے متاثر ہوں جو انسانیت نے کنٹرولڈ فلائٹ اور سپرسونک اسپیڈ حاصل کرنے کے لیے عبور کیے ہیں۔", aboutP4: "اس وقت، میں آن لائن کورسز کے ذریعے ڈیزائن، سیمولیشن، اور پروگرامنگ میں اپنی مہارتیں بڑھا رہا ہوں، اور میں ہمیشہ نئے ٹولز اور ٹیکنالوجیز کو دریافت کرنے کے لیے پُر جوش ہوں جو میرے شوق سے میل کھاتے ہیں۔", aboutP5: "میں ایک ابھرتا ہوا ایف 1 انجینئر ہوں، اور میں ہمیشہ ہم خیال لوگوں سے جڑنے کے لیے تیار ہوں — چاہے وہ لنکڈ اِن پر ہو یا ای میل کے ذریعے۔", skillsTitle: 'مہارتیں', projectsTitle: 'منصوبے', educationTitle: 'تعلیم', certificationsTitle: 'لائسنس اور سرٹیفکیٹس', contactTitle: 'رابطہ کریں', contactAlt: 'یا اس ای میل پر رابطہ کریں: ', contactEmail: 'ta309ha@gmail.com', labelName: 'نام', labelEmail: 'ای میل', labelMessage: 'پیغام', sendMessageBtn: 'پیغام بھیجیں', downloadsTitle: 'ڈاؤن لوڈز', resumeTitle: 'ریزیومے', resumeDesc: 'میرا تازہ ترین پروفیشنل ریزیومے', resumeBtn: 'پی ڈی ایف ڈاؤن لوڈ کریں', transcriptTitle: 'اکیڈمک ٹرانسکرپٹ', transcriptDesc: 'یونیورسٹی کا آفیشل ٹرانسکرپٹ', transcriptBtn: 'پی ڈی ایف ڈاؤن لوڈ کریں', footerLinkedIn: 'لنکڈ اِن', footerGitHub: 'گِٹ ہب', footerEmail: 'ای میل', footerCopyright: '© 2025 تہا فاروق'
-    },
-    fr: {
-      siteTitle: 'Taha Farrukh', navHome: 'Accueil', navMenu: 'Menu', navAbout: 'À propos', navSkills: 'Compétences', navProjects: 'Projets', navEducation: 'Éducation', navCertifications: 'Licences & Certificats', navDownloads: 'Téléchargements', navSettings: 'Paramètres', modeToggleText: 'Mode Clair/Sombre', languageBtn: 'Langue', homeTitle: 'Taha Farrukh', homeSubtitle: "Étudiant en génie mécanique | NUST '28 | Passionné de F1 & Automobile", homeAbout: 'À propos', homeSkills: 'Compétences', homeProjects: 'Projets', homeEducation: 'Éducation', homeCertifications: 'Certificats', homeDownloads: 'Téléchargements', aboutTitle: 'À propos de moi', aboutP1: "Je suis étudiant en génie mécanique, venant de terminer ma première année. Je suis passionné par l'ingénierie automobile et le sport automobile depuis aussi longtemps que je me souvienne — en particulier la Formule 1, que j'ai commencé à suivre de près en 2015–2016 en tant que fan de Red Bull Racing et de Max Verstappen.", aboutP2: "Au fil des ans, cette passion s'est étendue au-delà de la F1 à l'endurance (comme Le Mans) et au MotoGP, où j'ai appris à apprécier la complexité et l'innovation de l'ingénierie de haute performance.", aboutP3: "Dernièrement, je me suis aussi plongé dans le monde de l'aviation — en particulier la conception et la fabrication d'avions et de jets de chasse. Je suis fasciné par les défis techniques que l'humanité a relevés pour atteindre le vol contrôlé et la vitesse supersonique.", aboutP4: "Actuellement, je développe mes compétences grâce à des cours en ligne en conception, simulation et programmation, et je suis toujours désireux d'explorer de nouveaux outils et technologies en accord avec mes intérêts.", aboutP5: "Je suis un ingénieur F1 en devenir, et je suis toujours ouvert à rencontrer des personnes partageant les mêmes idées — que ce soit sur LinkedIn ou par e-mail.", skillsTitle: 'Compétences', projectsTitle: 'Projets', educationTitle: 'Éducation', certificationsTitle: 'Licences & Certificats', contactTitle: 'Contactez-moi', contactAlt: 'Ou contactez-moi à ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nom', labelEmail: 'E-mail', labelMessage: 'Message', sendMessageBtn: 'Envoyer', downloadsTitle: 'Téléchargements', resumeTitle: 'CV', resumeDesc: 'Mon CV professionnel à jour', resumeBtn: 'Télécharger PDF', transcriptTitle: 'Relevé de notes', transcriptDesc: 'Relevé de notes officiel de l\'université', transcriptBtn: 'Télécharger PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'E-mail', footerCopyright: '© 2025 Taha Farrukh'
-    },
-    es: {
-      siteTitle: 'Taha Farrukh', navHome: 'Inicio', navMenu: 'Menú', navAbout: 'Acerca de', navSkills: 'Habilidades', navProjects: 'Proyectos', navEducation: 'Educación', navCertifications: 'Licencias y Certificados', navDownloads: 'Descargas', navSettings: 'Configuración', modeToggleText: 'Modo Claro/Oscuro', languageBtn: 'Idioma', homeTitle: 'Taha Farrukh', homeSubtitle: "Estudiante de Ingeniería Mecánica | NUST '28 | Apasionado de F1 y Automoción", homeAbout: 'Acerca de', homeSkills: 'Habilidades', homeProjects: 'Proyectos', homeEducation: 'Educación', homeCertifications: 'Certificados', homeDownloads: 'Descargas', aboutTitle: 'Sobre mí', aboutP1: "Soy estudiante de Ingeniería Mecánica y acabo de terminar mi primer año. Me apasiona la ingeniería automotriz y el automovilismo desde que tengo memoria, especialmente la Fórmula 1, que empecé a seguir de cerca en 2015–2016 como fan de Red Bull Racing y Max Verstappen.", aboutP2: "Con los años, esa pasión se ha expandido más allá de la F1 hacia las carreras de resistencia (como Le Mans) y MotoGP, donde he aprendido a apreciar la complejidad y la innovación de la ingeniería de alto rendimiento.", aboutP3: "Últimamente, también me he sumergido en el mundo de la aviación, especialmente en el diseño y la fabricación de aviones y cazas. Me fascinan los desafíos de ingeniería que la humanidad ha superado para lograr el vuelo controlado y la velocidad supersónica.", aboutP4: "Actualmente, estoy desarrollando mis habilidades a través de cursos en línea de diseño, simulación y programación, y siempre estoy ansioso por explorar nuevas herramientas y tecnologías que se alineen con mis intereses.", aboutP5: "Aspiro a ser ingeniero de F1 y siempre estoy abierto a conectar con personas afines, ya sea en LinkedIn o por correo electrónico.", skillsTitle: 'Habilidades', projectsTitle: 'Proyectos', educationTitle: 'Educación', certificationsTitle: 'Licencias y Certificados', contactTitle: 'Contáctame', contactAlt: 'O contáctame en ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nombre', labelEmail: 'Correo electrónico', labelMessage: 'Mensaje', sendMessageBtn: 'Enviar mensaje', downloadsTitle: 'Descargas', resumeTitle: 'Currículum', resumeDesc: 'Mi currículum profesional actualizado', resumeBtn: 'Descargar PDF', transcriptTitle: 'Certificado Académico', transcriptDesc: 'Certificado oficial de la universidad', transcriptBtn: 'Descargar PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Correo', footerCopyright: '© 2025 Taha Farrukh'
-    },
-    it: {
-      siteTitle: 'Taha Farrukh', navHome: 'Home', navMenu: 'Menu', navAbout: 'Chi sono', navSkills: 'Competenze', navProjects: 'Progetti', navEducation: 'Istruzione', navCertifications: 'Licenze e Certificati', navDownloads: 'Download', navSettings: 'Impostazioni', modeToggleText: 'Modalità Chiara/Scura', languageBtn: 'Lingua', homeTitle: 'Taha Farrukh', homeSubtitle: "Studente di Ingegneria Meccanica | NUST '28 | Appassionato di F1 e Automotive", homeAbout: 'Chi sono', homeSkills: 'Competenze', homeProjects: 'Progetti', homeEducation: 'Istruzione', homeCertifications: 'Certificati', homeDownloads: 'Download', aboutTitle: 'Chi sono', aboutP1: "Sono uno studente di ingegneria meccanica, ho appena terminato il primo anno. Sono appassionato di ingegneria automobilistica e motorsport da sempre — in particolare della Formula 1, che ho iniziato a seguire da vicino nel 2015–2016 come fan della Red Bull Racing e di Max Verstappen.", aboutP2: "Negli anni questa passione si è estesa oltre la F1 alle gare di durata (come Le Mans) e alla MotoGP, dove ho imparato ad apprezzare la complessità e l'innovazione dell'ingegneria ad alte prestazioni.", aboutP3: "Ultimamente mi sto anche immergendo nel mondo dell'aviazione — in particolare nella progettazione e produzione di aerei e caccia. Sono affascinato dalle sfide ingegneristiche che l'umanità ha superato per ottenere il volo controllato e la velocità supersonica.", aboutP4: "Attualmente sto sviluppando le mie competenze attraverso corsi online di progettazione, simulazione e programmazione, e sono sempre desideroso di esplorare nuovi strumenti e tecnologie in linea con i miei interessi.", aboutP5: "Sono un aspirante ingegnere di F1 e sono sempre aperto a connettermi con persone che la pensano allo stesso modo — sia su LinkedIn che via e-mail.", skillsTitle: 'Competenze', projectsTitle: 'Progetti', educationTitle: 'Istruzione', certificationsTitle: 'Licenze e Certificati', contactTitle: 'Contattami', contactAlt: 'Oppure contattami a ', contactEmail: 'ta309ha@gmail.com', labelName: 'Nome', labelEmail: 'Email', labelMessage: 'Messaggio', sendMessageBtn: 'Invia messaggio', downloadsTitle: 'Download', resumeTitle: 'Curriculum', resumeDesc: 'Il mio curriculum professionale aggiornato', resumeBtn: 'Scarica PDF', transcriptTitle: 'Certificato Accademico', transcriptDesc: 'Certificato ufficiale dell\'università', transcriptBtn: 'Scarica PDF', footerLinkedIn: 'LinkedIn', footerGitHub: 'GitHub', footerEmail: 'Email', footerCopyright: '© 2025 Taha Farrukh'
-    }
-  };
 
-  function changeLanguage(lang) {
-    // Update active language in menu
-    document.querySelectorAll('.language-option').forEach(opt => {
-      opt.classList.toggle('active', opt.getAttribute('onclick').includes(`'${lang}'`));
-    });
-    // Close the language menu
-    toggleLanguageMenu();
-    // Update all translatable text
-    const dict = translations[lang] || translations['en'];
-    for (const key in dict) {
-      const el = document.getElementById(key);
-      if (el) {
-        if (key === 'contactAlt') {
-          el.innerHTML = dict[key] + `<span style=\"color:#aaa;\" id=\"contactEmail\">${dict['contactEmail']}</span>`;
-        } else if (key === 'languageBtn') {
-          // Only update the text node, not the arrow span
-          if (el.childNodes.length > 0) {
-            // Find the first text node
-            for (let i = 0; i < el.childNodes.length; i++) {
-              if (el.childNodes[i].nodeType === Node.TEXT_NODE) {
-                el.childNodes[i].textContent = dict[key] + ' ';
-                break;
-              }
-            }
-          }
-        } else {
-          el.textContent = dict[key];
-        }
-      }
-    }
-    // Save preference
-    localStorage.setItem('language', lang);
-  }
+
+
 
   // Initialize on load
   document.addEventListener('DOMContentLoaded', () => {
@@ -2642,9 +2492,7 @@
       }
     });
     
-    // Initialize language
-    const savedLang = localStorage.getItem('language') || 'en';
-    changeLanguage(savedLang);
+
     
     showSection('home');
     
@@ -2696,12 +2544,22 @@
     }
   })();
 
-  // Show Projects tab if ?projects is in the URL
-  if (window.location.search.includes('projects')) {
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof showSection === 'function') showSection('projects');
+      // Show Projects tab if ?projects is in the URL
+    if (window.location.search.includes('projects')) {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof showSection === 'function') showSection('projects');
+      });
+    }
+    
+    // Listen for dark mode changes from other tabs/windows
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'darkMode') {
+        const isDark = e.newValue === 'true';
+        document.body.classList.toggle('dark-mode', isDark);
+        document.getElementById('darkModeToggle').checked = isDark;
+        updateModeIcon(isDark);
+      }
     });
-  }
 </script>
 </body>
 </html>
