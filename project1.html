@@ -33,7 +33,7 @@
       display: flex;
       flex-direction: column;
       line-height: 1.6;
-      transition: all 0.3s ease;
+      transitio</div>n: all 0.3s ease;
     }
     
     body.dark-mode {
@@ -41,7 +41,7 @@
       color: #f0f0f0;
       --card-bg: #2a2a2a;
       --text-primary: #f0f0f0;
-      --text-secondary: #cccccc;
+      --text-secondary: #cccccc;</div>
     }
     
     /* Back Navigation */
@@ -95,12 +95,12 @@
       margin: 0 auto;
       width: 100%;
     }
-    
+
     .project-header {
       margin-bottom: 40px;
       max-width: 800px;
     }
-    
+
     .project-content h1 {
       font-size: 2.8rem;
       margin-bottom: 20px;
@@ -108,7 +108,7 @@
       color: var(--text-primary);
       line-height: 1.2;
     }
-    
+
     .project-content p {
       font-size: 1.2rem;
       max-width: 800px;
@@ -116,41 +116,86 @@
       color: var(--text-secondary);
       line-height: 1.7;
     }
-    
-    .project-image-container {
-      margin: 40px 0;
-      position: relative;
+
+    /* Gallery layout: images side by side and bigger */
+    .project-gallery {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .gallery-item {
+      width: 375px; /* 325px + ~15% */
+      background: var(--card-bg);
       border-radius: 16px;
-      overflow: hidden;
+      padding: 24px; /* slightly increased for proportion */
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
       transition: all 0.3s ease;
-      background: var(--card-bg);
-      padding: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    
-    .project-image-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-    }
-    
-    .project-image {
+
+    .gallery-image {
       width: 100%;
-      max-width: 600px;
+      max-width: 316px; /* 275px + ~15% */
       height: auto;
       border-radius: 12px;
       display: block;
-      margin: 0 auto;
+      margin-bottom: 17px;
       transition: all 0.3s ease;
     }
-    
-    .project-caption {
+
+    .gallery-caption {
       font-size: 1rem;
       font-style: italic;
       font-weight: 600;
-      margin-top: 16px;
       color: var(--text-primary);
       text-align: center;
+      line-height: 1.4;
     }
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+
+   .gallery-caption {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.gallery-caption {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.4;
+}
     
     /* Footer */
     footer {
@@ -373,21 +418,31 @@
   
   <div class="project-content">
     <div class="project-header">
-      <h1 id="projectTitle">AutoCAD Project – 4-Bolt Bearing Block</h1>
-      <p id="projectDesc">To get better at mechanical design and improve my CAD skills, I decided to model a 4-bolt bearing housing using AutoCAD. It was a really useful exercise, especially because these types of bearing units are commonly used in machines to support rotating shafts — where getting the alignment and precision right is super important.<br><br>While working on it, I paid close attention to things like the geometry, the layout of the mounting holes, and making sure the overall design was symmetrical. All of that plays a key role in making sure the part functions properly and can actually be manufactured without issues.<br><br>This project gave me a better understanding of how real components are designed — not just for how they work, but also for how easily they can be made. It's definitely helped me see the practical side of CAD modeling and mechanical design a lot more clearly.</p>
+      <h1 id="projectTitle">AutoCAD Project – V8 Cylinder Head & Rocker Assembly</h1>
+      <p id="projectDesc">To further sharpen my mechanical design and CAD skills, I modeled a complete V8 cylinder head along with the rocker assembly using AutoCAD. This part represents the top end of a high-performance engine, where airflow, timing, and combustion efficiency are controlled.
+
+<br><br>The model included valves, valve springs, rockers, and a camshaft mechanism, each created with close attention to geometry and placement. I made sure the valve arrangement and flow paths for intake and exhaust were realistic, since these details directly influence power delivery, reliability, and long-term durability.
+
+<br><br>Working on this project not only improved my CAD expertise but also gave me a clearer understanding of how the cylinder head interacts with the rest of the engine. It highlighted why this component is often considered one of the most critical parts in engine design and performance.</p>
     </div>
     
-    <div class="project-image-container">
-      <img src="project1.png" alt="4-Bolt Bearing Block AutoCAD Model" class="project-image" id="projectImage">
-      <div class="project-caption" id="projectCaption">4-Bolt Bearing 3D Model</div>
+    <div class="project-gallery">
+      <div class="gallery-item">
+        <img src="cylinder.png" alt="Cylinder Head" class="gallery-image" id="image1">
+        <div class="gallery-caption" id="caption1">Cylinder Head</div>
+      </div>
+      <div class="gallery-item">
+        <img src="rocker.png" alt="Rocker Cover & Cylinder Head Assembly" class="gallery-image" id="image2">
+        <div class="gallery-caption" id="caption2">Rocker Cover & Cylinder Head Assembly</div>
+      </div>
     </div>
   </div>
   
-  <footer id="footer">
+ <footer id="footer">
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/tahafarrukh" target="_blank" id="footerLinkedIn">LinkedIn</a>
       <a href="https://github.com/L2Faulty" target="_blank" id="footerGitHub">GitHub</a>
-      <a href="TahaFarrukh.html#contact" id="footerEmail">Email</a>
+      <a href="../TahaFarrukh.html#contact" id="footerEmail">Email</a>
     </div>
     <div id="footerCopyright">© 2025 Taha Farrukh</div>
   </footer>
@@ -415,12 +470,16 @@
         });
         
         // Image loading error handling
-        const projectImage = document.getElementById('projectImage');
-        projectImage.addEventListener('error', function() {
-          this.style.display = 'none';
-          const caption = document.getElementById('projectCaption');
-          caption.textContent = 'Image not available';
-          caption.style.color = '#999';
+        const projectImages = document.querySelectorAll('.gallery-image');
+        projectImages.forEach((img, index) => {
+          img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const caption = document.getElementById(`caption${index + 1}`);
+            if (caption) {
+              caption.textContent = 'Image not available';
+              caption.style.color = '#999';
+            }
+          });
         });
         
         // Smooth scrolling for anchor links
