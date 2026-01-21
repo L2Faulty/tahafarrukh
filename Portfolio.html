@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taha Farrukh | Mechanical Engineer Portfolio</title>
+    <meta name="description" content="Portfolio of Taha Farrukh - Mechanical Engineering Student & F1 Enthusiast">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilac: '#D8B4FE', // Light Lilac
+                        lilacHover: '#bea6e5',
+                        bgBlack: '#050505', // Deep Black
+                        cardBlack: '#0f0f0f',
+                        borderBlack: '#262626'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e7eb;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Lilac Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #D8B4FE, #e9d5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- MAGIC BENTO SPOTLIGHT EFFECT --- */
+        .spotlight-card {
+            position: relative;
+            background: #0f0f0f;
+            border: 1px solid #262626;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+        
+        /* Disable spotlight hover on mobile to prevent sticky states */
+        @media (hover: hover) {
+            .spotlight-card::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: radial-gradient(
+                    800px circle at var(--mouse-x) var(--mouse-y), 
+                    rgba(216, 180, 254, 0.06), 
+                    transparent 40%
+                );
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            .spotlight-card:hover::before { opacity: 1; }
+
+            .spotlight-card:hover {
+                border-color: #D8B4FE;
+                transform: translateY(-4px);
+                background: #141414;
+                box-shadow: 0 10px 30px -10px rgba(216, 180, 254, 0.15);
+            }
+        }
+
+        /* Text Spotlight Hover */
+        .text-spotlight:hover {
+            text-shadow: 0 0 8px rgba(216, 180, 254, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+
+        /* Navigation Glass Effect */
+        .nav-blur {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #262626;
+        }
+
+        /* Timeline Styling */
+        .timeline-border {
+            border-left: 2px solid #262626;
+        }
+
+        /* --- RE-TRIGGERING FADE ANIMATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            filter: blur(8px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
+            will-change: opacity, transform, filter;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Background Canvas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        [x-cloak] { display: none !important; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D8B4FE; }
+
+        /* Recaptcha dark theme adjust */
+        .g-recaptcha {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-lilac selection:text-black" x-data="portfolioData">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="fixed top-0 w-full z-40 nav-blur" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between md:justify-center">
+            
+            <a href="#home" class="md:hidden text-lg font-bold text-gradient tracking-tight">TF</a>
+
+            <div class="hidden md:flex space-x-10 text-sm font-medium text-zinc-400">
+                <a href="#home" class="nav-link hover:text-lilac transition-colors cursor-pointer">Home</a>
+                <a href="#about" class="nav-link hover:text-lilac transition-colors cursor-pointer">About</a>
+                <a href="#projects" class="nav-link hover:text-lilac transition-colors cursor-pointer">Projects</a>
+                <a href="#experience" class="nav-link hover:text-lilac transition-colors cursor-pointer">Experience & Education</a>
+                <a href="#certifications" class="nav-link hover:text-lilac transition-colors cursor-pointer">Certifications</a>
+                <a href="#contact" class="nav-link hover:text-lilac transition-colors cursor-pointer">Contact</a>
+                <a href="#downloads" class="nav-link hover:text-lilac transition-colors cursor-pointer">Downloads</a>
+            </div>
+
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-zinc-400 hover:text-lilac focus:outline-none">
+                <i class="fa-solid fa-bars text-xl" x-show="!mobileMenuOpen"></i>
+                <i class="fa-solid fa-xmark text-xl" x-show="mobileMenuOpen" x-cloak></i>
+            </button>
+        </div>
+
+        <div x-show="mobileMenuOpen" 
+             x-collapse 
+             x-cloak
+             class="md:hidden bg-[#050505] border-b border-[#262626] overflow-hidden">
+            <div class="flex flex-col p-6 space-y-6 text-center text-zinc-400 font-medium">
+                <a href="#home" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Home</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">About</a>
+                <a href="#projects" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Projects</a>
+                <a href="#experience" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Experience</a>
+                <a href="#certifications" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Certifications</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Contact</a>
+                <a href="#downloads" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Downloads</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6">
+        
+        <section id="home" class="min-h-screen flex flex-col justify-center py-20 relative z-30">
+            <div class="space-y-6 text-center md:text-left reveal active">
+                <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter text-gradient leading-tight text-spotlight">
+                    Taha Farrukh
+                </h1>
+                <p class="text-lg md:text-2xl text-zinc-400 max-w-2xl font-light leading-relaxed">
+                    Mechanical Engineering Student @ <span class="text-lilac font-medium">NUST '28</span>. 
+                    Formula 1 enthusiast & aspiring high-performance engineer.
+                </p>
+                
+                <div class="flex space-x-6 pt-4 justify-center md:justify-start">
+                    <a href="https://linkedin.com/in/tahafarrukh" target="_blank" class="text-zinc-400 hover:text-lilac transition-all scale-110 cursor-pointer">
+                        <i class="fa-brands fa-linkedin-in text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/L2Faulty" target="_blank" class="text-zinc-400 hover:text-lilac transition-all scale-110 cursor-pointer">
+                        <i class="fa-brands fa-github text-2xl"></i>
+                    </a>
+                    <a href="#contact" class="nav-link text-zinc-400 hover:text-lilac transition-all scale-110 cursor-pointer">
+                        <i class="fa-regular fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-4">
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-4">About Me</h2>
+                    <h3 class="text-3xl font-bold tracking-tight text-lilac text-spotlight">The intersection of speed and engineering.</h3>
+                </div>
+                <div class="md:col-span-8 space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
+                    <p class="text-spotlight">I'm a Mechanical Engineering student, having just completed my first year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.</p>
+                    <p class="text-spotlight">Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I've come to appreciate the complexity and innovation behind high-performance engineering.</p>
+                    <p class="text-spotlight">Lately, I've also been diving into the world of aviation — particularly aircraft and fighter jet design and manufacturing. I'm fascinated by the engineering challenges humanity has overcome to achieve controlled flight and supersonic speed.</p>
+                    <p class="text-spotlight">Currently, I'm building my skills through online courses in design, simulation, and programming, and I'm always eager to explore new tools and technologies that align with my interests. <span class="text-lilac font-medium">I'm an aspiring F1 engineer.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div @click="openModal('v8')" class="md:col-span-2 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full min-h-[300px] cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac transition-colors">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold group-hover:text-lilac transition-colors">V8 Bottom End Assembly</h3>
+                        <p class="text-zinc-400 font-light max-w-md">Detailed modeling of an engine piston, connecting rod, and crankshaft.</p>
+                    </div>
+                    <div class="mt-8 flex gap-3 relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">AutoCAD</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Mechanical Design</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('feynman')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">ASME Feynman's Trap</h3>
+                        <p class="text-zinc-500 text-sm font-light">Mechanical trap design challenge.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">ASME</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('ansys')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">ANSYS Truss Analysis</h3>
+                        <p class="text-zinc-500 text-sm font-light">Structural FEA simulation.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">ANSYS</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">FEA</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('hatech')" class="md:col-span-2 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full min-h-[300px] cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold group-hover:text-lilac transition-colors">HATech Assault Dozer</h3>
+                        <p class="text-zinc-400 font-light max-w-md">Award-winning off-road vehicle design for the ASME IAM3D Challenge.</p>
+                    </div>
+                    <div class="mt-8 flex gap-3 relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">EFx</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">iAM3D</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('thermo')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Steam Power Plant Analysis</h3>
+                        <p class="text-zinc-500 text-sm font-light">Thermodynamic cycle design & optimization.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Thermodynamics</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Python</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('fluid')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Irrigation System Design</h3>
+                        <p class="text-zinc-500 text-sm font-light">Hydrostatic loading & trajectory analysis.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Fluids</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Python</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('vibration')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Vibration Monitor System</h3>
+                        <p class="text-zinc-500 text-sm font-light">Safety cut-off circuit design.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Electronics</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">LTspice</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="experience" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Education</h2>
+                    <div class="space-y-12 ml-4 timeline-border">
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-lilac rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">2024 – Present</span>
+                            <h3 class="text-xl font-bold text-lilac">BE Mechanical Engineering</h3>
+                            <p class="text-zinc-400">NUST (National University of Sciences and Technology)</p>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">2022 – 2024</span>
+                            <h3 class="text-xl font-bold">A Levels</h3>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">2021 – 2022</span>
+                            <h3 class="text-xl font-bold">O Levels</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Experience</h2>
+                    <div class="space-y-12 ml-4 timeline-border">
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-lilac rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">Sep 2025 – Present</span>
+                            <h3 class="text-xl font-bold text-lilac">Manufacturing Member</h3>
+                            <p class="text-zinc-300 font-medium">NUST Team 95</p>
+                            <p class="text-zinc-500 text-sm mt-1">Manufacturing off-road buggy components for Student Formula.</p>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">Dec 2025</span>
+                            <h3 class="text-xl font-bold">Winner - ASME IAM3D Challenge</h3>
+                            <p class="text-zinc-300 font-medium">Team HATech</p>
+                            <p class="text-zinc-500 text-sm mt-1">Secured 1st Place in the additive manufacturing design competition.</p>
+                        </div>
+                        <div class="relative pl-8">
+                            <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
+                            <span class="text-sm font-bold text-zinc-500">Sep 2025 – Dec 2025</span>
+                            <h3 class="text-xl font-bold">Humanitarian Fundraising Drive</h3>
+                            <p class="text-zinc-300 font-medium">HSF Orphanage</p>
+                            <p class="text-zinc-500 text-sm mt-1">Led the project and raised over 130k PKR for local orphanage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Licenses & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <a href="https://credentials.asme.org/7be3840c-e2d0-45df-96f2-fd2de78ab731#acc.2eKcGuOI" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="efxiam3d.png" alt="ASME Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">ASME EFx iAM3D 1st Place</h3>
+                        <p class="text-xs text-zinc-500 mt-1">ASME</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/verify/763X0UL2J52O" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/umich.png" alt="UMich Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">Python For Everybody</h3>
+                        <p class="text-xs text-zinc-500 mt-1">University of Michigan</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/verify/T3PJWC86XHCY" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/umich.png" alt="UMich Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">Python Data Structures</h3>
+                        <p class="text-xs text-zinc-500 mt-1">University of Michigan</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/verify/SHQYA8HAQSTZ" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/coursera.png" alt="Coursera Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">Innovate with ANSYS</h3>
+                        <p class="text-xs text-zinc-500 mt-1">Coursera Instructor Network</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/verify/6E25CVZCNO43" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/coursera.png" alt="Coursera Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">AutoCAD Product Development</h3>
+                        <p class="text-xs text-zinc-500 mt-1">Coursera Project Network</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/verify/9MDT1GBCP3L5" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/asu.png" alt="ASU Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">Engineering & Product Design</h3>
+                        <p class="text-xs text-zinc-500 mt-1">Arizona State University</p>
+                    </div>
+                </a>
+
+                <a href="https://www.coursera.org/account/accomplishments/specialization/O3QHUJF7FXPE" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/umich.png" alt="UMich Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">AI for Mechanical Engineers</h3>
+                        <p class="text-xs text-zinc-500 mt-1">University of Michigan</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section id="contact" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                
+                <div class="space-y-6">
+                    <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold">Contact</h2>
+                    <h3 class="text-5xl font-extrabold tracking-tighter text-lilac">Get in touch.</h3>
+                    <p class="text-zinc-400 text-lg font-light leading-relaxed">
+                        Interested in collaborating?
+                        Feel free to reach out. I'm always open to new opportunities.
+                    </p>
+                </div>
+                
+                <div class="spotlight-card p-8 rounded-3xl relative z-10">
+                    <form id="contactForm" class="space-y-4 relative z-10">
+                        <div class="grid grid-cols-1 gap-4">
+                            <input type="text" id="name" name="name" placeholder="Name" required
+                                class="bg-[#050505] border border-[#262626] p-4 rounded-xl focus:border-lilac outline-none transition-colors text-zinc-300 w-full">
+                            
+                            <input type="email" id="email" name="email" placeholder="Email" required
+                                class="bg-[#050505] border border-[#262626] p-4 rounded-xl focus:border-lilac outline-none transition-colors text-zinc-300 w-full">
+                            
+                            <textarea id="message" name="message" placeholder="Message" rows="4" required
+                                class="bg-[#050505] border border-[#262626] p-4 rounded-xl focus:border-lilac outline-none transition-colors text-zinc-300 w-full"></textarea>
+                        </div>
+                        
+                        <div id="recaptcha-container" class="mt-4"></div>
+
+                        <button type="submit" id="sendMessageBtn"
+                            class="w-full bg-lilac text-black font-bold py-4 rounded-xl hover:bg-white transition-colors uppercase text-sm tracking-widest mt-4">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="downloads" class="min-h-[50vh] flex flex-col justify-center py-20 mb-64 reveal">
+            <div class="text-center space-y-12">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold">Downloads</h2>
+                <h3 class="text-4xl font-bold tracking-tight text-white">Professional Documents</h3>
+                
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="Resume.pdf" download class="group relative inline-flex items-center justify-center bg-lilac text-black px-8 py-4 rounded-full font-bold transition-all hover:bg-white hover:scale-105">
+                        <span class="mr-2">Resume</span>
+                        <i data-lucide="file-user" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <a href="Academic Transcript.pdf" download class="group relative inline-flex items-center justify-center border border-zinc-700 text-zinc-300 px-8 py-4 rounded-full font-bold transition-all hover:border-lilac hover:text-lilac hover:scale-105">
+                        <span class="mr-2">Academic Transcript</span>
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="relative z-50 w-full bg-black border-t border-[#262626]">
+        <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col items-center justify-center space-y-8 text-zinc-500 text-xs">
+            <p>&copy; 2026 Taha Farrukh. All rights reserved.</p>
+            <div class="flex space-x-8">
+                <a href="https://linkedin.com/in/tahafarrukh" target="_blank" rel="noopener noreferrer" class="hover:text-lilac transition-colors">LinkedIn</a>
+                <a href="https://github.com/L2Faulty" target="_blank" rel="noopener noreferrer" class="hover:text-lilac transition-colors">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <div x-cloak 
+         x-show="modalOpen" 
+         class="fixed inset-0 z-[999] flex items-center justify-center pointer-events-none">
+        
+        <div x-show="modalOpen" 
+             @click="closeModal()"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="absolute inset-0 bg-black/80 backdrop-blur-sm pointer-events-auto">
+        </div>
+
+        <div x-show="modalOpen"
+             @click.outside="closeModal()"
+             x-transition:enter="transition ease-out duration-300" 
+             x-transition:enter-start="opacity-0 scale-90" 
+             x-transition:enter-end="opacity-100 scale-100" 
+             x-transition:leave="transition ease-in duration-200" 
+             x-transition:leave-start="opacity-100 scale-100" 
+             x-transition:leave-end="opacity-0 scale-90"
+             class="bg-[#0f0f0f] border border-lilac w-[95%] md:w-full max-w-2xl rounded-3xl p-8 md:p-12 relative shadow-2xl shadow-lilac/20 overflow-y-auto max-h-[85vh] md:max-h-[90vh] pointer-events-auto z-50">
+             
+            <button @click="closeModal()" class="absolute top-6 right-6 text-zinc-500 hover:text-lilac transition-colors">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-lilac leading-tight" x-text="activeProjectData.title"></h2>
+                    <div class="flex gap-2 flex-wrap mt-4">
+                        <template x-for="tag in activeProjectData.tags">
+                            <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300" x-text="tag"></span>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-zinc-300 text-lg leading-relaxed font-light">
+                    <template x-for="(para, index) in activeProjectData.desc" :key="index">
+                        <p x-text="para"></p>
+                    </template>
+                </div>
+
+                <template x-if="activeProjectData.report">
+                    <div class="flex justify-center w-full mt-8">
+                        <a :href="activeProjectData.report" download class="group relative inline-flex items-center justify-center bg-lilac text-black px-10 py-4 rounded-full font-bold transition-all hover:bg-white hover:scale-105 shadow-lg shadow-lilac/20">
+                            <span class="mr-3 text-lg">Download Report</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </template>
+
+                <template x-if="activeProjectData.images && activeProjectData.images.length > 0">
+                    <div class="mt-6 gap-6" 
+                         :class="activeProjectData.images.length === 1 ? 'flex justify-center' : 'grid grid-cols-1 md:grid-cols-2'">
+                        
+                        <template x-for="imgObj in activeProjectData.images">
+                            <div class="space-y-2 w-full max-w-md">
+                                <img :src="imgObj.src" alt="Project Image" class="w-full h-auto rounded-xl bg-zinc-900 border border-zinc-800 object-cover">
+                                <p class="text-xs text-zinc-500 italic text-center" x-text="imgObj.caption"></p>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template x-if="activeProjectData.model">
+                    <div class="mt-8 h-80 w-full bg-zinc-900/50 rounded-xl border border-zinc-800 overflow-hidden relative">
+                        <model-viewer 
+                            :src="activeProjectData.model" 
+                            alt="3D Model of the Project" 
+                            auto-rotate 
+                            camera-controls 
+                            shadow-intensity="1"
+                            camera-orbit="45deg 55deg 2.5m"
+                            class="w-full h-full"
+                            style="background-color: transparent;">
+                        </model-viewer>
+                        <div class="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+                            <span class="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">
+                                Click & Drag to Rotate
+                            </span>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* --- RECAPTCHA & EMAILJS LOGIC --- */
+        let recaptchaWidgetId = null;
+        let recaptchaReady = false;
+  
+        function onRecaptchaLoad() {
+            // Render the reCAPTCHA into the container
+            recaptchaWidgetId = grecaptcha.render('recaptcha-container', {
+                'sitekey': '6Lf34YArAAAAAKN6lzY6PcEpSOH7wCELbXECfd34',
+                'theme': 'dark', // Fits the site theme
+                'callback': function(response) {
+                    console.log('reCAPTCHA completed:', response);
+                    recaptchaReady = true;
+                }
+            });
+            recaptchaReady = true;
+        }
+
+        /* --- ALPINE.JS LOGIC --- */
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('portfolioData', () => ({
+                modalOpen: false,
+                activeKey: null,
+                
+                // Project Content
+                projects: {
+                    'v8': {
+                        title: "V8 Bottom End Assembly",
+                        desc: [
+                            "Driven by my passion for Formula 1 and a desire to sharpen my practical CAD skills, I used AutoCAD to design a detailed model of an engine’s core moving parts. I based the geometry on a high-performance specification—a 3.6-liter V8 with a 90 mm bore and 70 mm stroke—focusing specifically on the piston, connecting rod, and crankshaft to create a realistic powertrain setup.",
+                            "As I built the assembly, I focused on the mechanical interaction between these components, ensuring the alignment and geometry mirrored real-world physics. This project highlighted just how critical these internal relationships are for engine durability and efficiency, effectively connecting my enthusiasm for motorsports with the technical realities of mechanical design."
+                        ],
+                        tags: ['AutoCAD', 'Mechanical Design'],
+                        images: [
+                            { src: 'assembly.png', caption: 'Complete Assembly' }
+                        ]
+                    },
+                    'feynman': {
+                        title: "ASME Feynman's Trap",
+                        desc: [
+                            "Working with a team of five, we aimed to design a mouse trap-powered car optimized for maximum distance and straight-line stability. We focused on mechanical efficiency, testing various configurations of wheel sizes, axle placements, and lever arm lengths to find the setup that minimized friction and best transferred the trap's energy to the ground.",
+                            "It was a lesson in iterative design, as we constantly refined the vehicle based on how it performed during test runs rather than sticking to the first idea. The effort resulted in a car that secured the third-longest distance overall, earning us 3rd place and giving me valuable experience in collaborative problem-solving and prototyping."
+                        ],
+                        tags: ['ASME', 'Mechanism Design'],
+                        images: [
+                            { src: 'project2.png', caption: 'Third Place Certificate' }
+                        ]
+                    },
+                    'ansys': {
+                        title: "ANSYS Truss Analysis",
+                        desc: [
+                            "To explore structural mechanics , I performed a static analysis of a 2D truss using ANSYS Mechanical. I modeled the framework using line elements to represent the individual members, then set up realistic boundary conditions by applying pin and roller supports along with a targeted load to simulate actual stress on the system.",
+                            "After generating the mesh and running the simulation, I solved for the support reactions and internal forces to confirm the structure remained in equilibrium. This process went beyond just getting the numbers; it gave me hands-on experience with professional simulation tools and showed me exactly how the theoretical concepts of force distribution play out in a digital engineering environment."
+                        ],
+                        tags: ['ANSYS', 'FEA'],
+                        images: [
+                            { src: 'support2.png', caption: 'Static Reaction at Roller Support ' },
+                            { src: 'support1.png', caption: 'Static Reaction at Pin Support' } ,
+                            { src: 'modelling.png', caption: 'Modeling of Truss Geometry' },
+                            { src: 'forceanalysis.png', caption: 'Truss Member Force Evaluation ' } 
+                        ]
+                    },
+                    'hatech': {
+                        title: "HATech Assault Dozer",
+                        desc: [
+                            "My team and I took home 1st Place in the ASME IAM3D competition by building a mechanical assembly that had to be both lightweight and durable. We relied on SolidWorks and Design for Additive Manufacturing (DFAM) to shape the parts, iterating through different designs to strip away unnecessary material without sacrificing the strength needed to survive the competition’s stress tests.",
+                            "Once the design was locked in, we moved to the physical build, using 3D printing to manufacture the prototype with high precision. The assembly fit together perfectly and handled the heavy loads without failure, proving that our engineering calculations were correct and giving us the edge we needed to beat the other teams."
+                        ],
+                        tags: ['EFx', 'iAM3D', 'ASME'],
+                        model: 'rover_model.glb',
+                        images: [] // No static images for this one as per request, just the model
+                    },
+                    'thermo': {
+                        title: "Thermodynamic Analysis of a Steam Power Plant for Textile Manufacturing",
+                        desc: [
+                            "For my Thermodynamics semester project, I designed a 6 MW steam power plant based on the Regenerative Rankine Cycle to power a proposed textile manufacturing facility. To maximize efficiency, I engineered the cycle with a reheat stage and a dual-feedwater heater configuration (one open and one closed), which raised the plant's thermal efficiency to 33.1%.",
+                            "I validated the design by writing Python scripts to solve the system of non-linear energy balance equations and used MATLAB to visualize the cycle's behavior through accurate T-s diagrams. The final design not only met the 5.9 MW electrical load but also included a waste heat recovery system to provide hot water for the facility's dyeing process, making the system economically and environmentally sustainable."
+                        ],
+                        tags: ['Thermodynamics', 'MATLAB', 'Python'],
+                        report: 'CEP Report (Thermodynamics).pdf'
+                    },
+                    'fluid': {
+                        title: "Optimization of Gravity-Fed Irrigation: Hydrostatic Loading & Trajectory Analysis",
+                        desc: [
+                            "For my Fluid Mechanics design project, I engineered a modular rainwater harvesting system capable of withstanding high hydrostatic loads while delivering a controlled irrigation stream. I conducted a detailed hydrostatic analysis to determine that the flood gate would face a maximum force of 13.54 kN, leading me to select Aluminum 6061-T6 for the gate material due to its superior strength-to-weight ratio and corrosion resistance.",
+                            "To meet the targeted irrigation range of 3.4 meters, I applied Bernoulli’s principle to optimize the system geometry, ultimately elevating the basin on a 1.15-meter structural stand and selecting a 40 mm orifice to balance flow rate with discharge duration. I further enhanced the design reliability by integrating a passive siphoning system for overflow protection and validated the entire hydraulic performance using Python simulations to model the pressure distribution and jet trajectory."
+                        ],
+                        tags: ['Fluid Mechanics', 'Python', 'CAD'],
+                        report: 'Fluid Mechanics - Flood Water Gate Report.pdf'
+                    },
+                    'vibration': {
+                        title: "Industrial Machinery Vibration Monitor & Safety Cut-off System",
+                        desc: [
+                            "Aimed at preventing catastrophic failures in industrial rotating equipment, I designed a discrete transistor-based \"Vibration Monitor\" that automatically cuts power when safety thresholds are breached. The system processes signals from a piezoelectric sensor through a custom two-stage Common Emitter amplifier, boosting millivolt-level vibration signatures into actionable logic signals without the need for expensive PLC hardware.",
+                            "To validate the design, I performed extensive simulations in LTspice, achieving a voltage gain of 68dB while maintaining a stable high-pass characteristic that filters out low-frequency background noise. The final circuit demonstrated a precise trigger threshold and robust noise rejection, proving it could reliably distinguish between normal operating vibrations and critical bearing faults to trigger the safety latch immediately."
+                        ],
+                        tags: ['Electronics', 'LTspice', 'Circuit Design'],
+                        report: 'EE Project Report.pdf'
+                    }
+                },
+
+                // Getter
+                get activeProjectData() {
+                    return this.projects[this.activeKey] || { title: '', desc: [], tags: [], images: [], report: null };
+                },
+
+                // Actions
+                openModal(key) {
+                    this.activeKey = key;
+                    this.modalOpen = true;
+                    document.body.style.overflow = 'hidden'; 
+                },
+                closeModal() {
+                    this.modalOpen = false;
+                    document.body.style.overflow = 'auto'; 
+                    setTimeout(() => { this.activeKey = null; }, 300);
+                }
+            }))
+        });
+
+        /* --- GLOBAL SCRIPTS --- */
+        window.addEventListener('load', () => {
+            lucide.createIcons();
+            
+            // 1. RE-TRIGGERING FADE ANIMATION (Up & Down)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // This removes the class when you scroll away, so it fades in again when you return
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // 2. MAGIC BENTO SPOTLIGHT (Mouse Tracking)
+            const cards = document.querySelectorAll('.spotlight-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+            // 3. CENTER SCROLL LOGIC
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop default jump
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' // This forces the section to be in the MIDDLE of the screen
+                        });
+                    }
+                });
+            });
+
+            // 4. CONTACT FORM HANDLING
+            const contactForm = document.getElementById('contactForm');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = document.getElementById('sendMessageBtn');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Check if reCAPTCHA is ready and completed
+                    if (!recaptchaReady || typeof grecaptcha === 'undefined' || !grecaptcha.getResponse) {
+                        alert('reCAPTCHA is not loaded. Please refresh the page and try again.');
+                        return;
+                    }
+                    
+                    const recaptchaResponse = grecaptcha.getResponse();
+                    if (!recaptchaResponse || recaptchaResponse.length === 0) {
+                        alert('Please complete the reCAPTCHA verification before sending your message.');
+                        return;
+                    }
+                    
+                    // Show loading state
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    
+                    // Get form data
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // EmailJS configuration
+                    emailjs.init("dnE5cqzrhDv3gc06f"); // EmailJS public key
+                    
+                    // Send email using EmailJS
+                    emailjs.send("service_5f8xd89", "template_xq4m5ku", {
+                        from_name: name,
+                        from_email: email,
+                        message: message,
+                        to_email: "ta309ha@gmail.com"
+                    })
+                    .then(function(response) {
+                        // Success
+                        alert('Thank you for your message! I will get back to you soon.');
+                        contactForm.reset();
+                        
+                        // Reset reCAPTCHA
+                        if (recaptchaWidgetId !== null) {
+                            grecaptcha.reset(recaptchaWidgetId);
+                        }
+                        
+                        // Reset button
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }, function(error) {
+                        // Error
+                        alert('Sorry, there was an error sending your message. Please try again or contact me directly at ta309ha@gmail.com');
+                        console.error('EmailJS Error:', error);
+                        
+                        // Reset reCAPTCHA
+                        if (recaptchaWidgetId !== null) {
+                            grecaptcha.reset(recaptchaWidgetId);
+                        }
+                        
+                        // Reset button
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    });
+                });
+            }
+        });
+
+        /* --- BACKGROUND PARTICLES (VANILLA JS) --- */
+        (function() {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width, height;
+            let particles = [];
+            
+            // Configuration
+            const particleCount = 120; // Hundreds of particles
+            // COLOR: Light Lilac (#D8B4FE) -> RGB(216, 180, 254)
+            const particleColor = 'rgba(216, 180, 254, 0.4)'; 
+            const speed = 0.3; // Slow floating
+            
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * speed;
+                    this.vy = (Math.random() - 0.5) * speed;
+                    this.size = Math.random() * 2 + 0.5; // Small dots
+                }
+                
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    
+                    // Wrap around screen
+                    if (this.x < 0) this.x = width;
+                    if (this.x > width) this.x = 0;
+                    if (this.y < 0) this.y = height;
+                    if (this.y > height) this.y = 0;
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = particleColor;
+                    ctx.fill();
+                }
+            }
+            
+            function init() {
+                resize();
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+                loop();
+            }
+            
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            
+            function loop() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(loop);
+            }
+            
+            window.addEventListener('resize', resize);
+            init();
+        })();
+    </script>
+</body>
+</html>
