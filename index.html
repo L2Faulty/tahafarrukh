@@ -163,12 +163,13 @@
             
             <a href="#home" class="md:hidden text-lg font-bold text-gradient tracking-tight">TF</a>
 
-            <div class="hidden md:flex space-x-10 text-sm font-medium text-zinc-400">
+            <div class="hidden md:flex space-x-8 lg:space-x-10 text-sm font-medium text-zinc-400">
                 <a href="#home" class="nav-link hover:text-lilac transition-colors cursor-pointer">Home</a>
                 <a href="#about" class="nav-link hover:text-lilac transition-colors cursor-pointer">About</a>
                 <a href="#projects" class="nav-link hover:text-lilac transition-colors cursor-pointer">Projects</a>
                 <a href="#experience" class="nav-link hover:text-lilac transition-colors cursor-pointer">Experience & Education</a>
                 <a href="#certifications" class="nav-link hover:text-lilac transition-colors cursor-pointer">Certifications</a>
+                <a href="#awards" class="nav-link hover:text-lilac transition-colors cursor-pointer">Awards & Honors</a>
                 <a href="#contact" class="nav-link hover:text-lilac transition-colors cursor-pointer">Contact</a>
                 <a href="#downloads" class="nav-link hover:text-lilac transition-colors cursor-pointer">Downloads</a>
             </div>
@@ -187,8 +188,9 @@
                 <a href="#home" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Home</a>
                 <a href="#about" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">About</a>
                 <a href="#projects" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Projects</a>
-                <a href="#experience" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Experience</a>
+                <a href="#experience" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Experience & Education</a>
                 <a href="#certifications" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Certifications</a>
+                <a href="#awards" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Awards & Honors</a>
                 <a href="#contact" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Contact</a>
                 <a href="#downloads" @click="mobileMenuOpen = false" class="nav-link hover:text-lilac transition-colors">Downloads</a>
             </div>
@@ -228,10 +230,10 @@
                     <h3 class="text-3xl font-bold tracking-tight text-lilac text-spotlight">The intersection of speed and engineering.</h3>
                 </div>
                 <div class="md:col-span-8 space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
-                    <p class="text-spotlight">I'm a Mechanical Engineering student, having just completed my first year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.</p>
-                    <p class="text-spotlight">Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I've come to appreciate the complexity and innovation behind high-performance engineering.</p>
+                    <p class="text-spotlight">I'm a Mechanical Engineering student, having just completed my second year. I've been passionate about automotive engineering and motorsports for as long as I can remember — especially Formula 1, which I started following closely back in 2015–2016 as a Red Bull Racing and Max Verstappen fan.</p>
+                    <p class="text-spotlight">Over the years, that passion has expanded beyond F1 into endurance racing (like Le Mans) and MotoGP, where I've come to appreciate the complexity and innovation behind high-performance engineering. I also actively apply this interest through sim racing, which has deepened my understanding of vehicle dynamics and telemetry.</p>
                     <p class="text-spotlight">Lately, I've also been diving into the world of aviation — particularly aircraft and fighter jet design and manufacturing. I'm fascinated by the engineering challenges humanity has overcome to achieve controlled flight and supersonic speed.</p>
-                    <p class="text-spotlight">Currently, I'm building my skills through online courses in design, simulation, and programming, and I'm always eager to explore new tools and technologies that align with my interests. <span class="text-lilac font-medium">I'm an aspiring F1 engineer.</span></p>
+                    <p class="text-spotlight">Currently, I’ve transitioned from online Coursera certifications to applying engineering principles in the workshop. Whether it's manufacturing parts for the NUST Team 95 racing buggy or polishing my structural analysis skills in SolidWorks and ANSYS, I learn best by doing. This drive led to a 1st Place victory at the ASME EFX iAM3D 2025 and recognition at the NUST High Achiever ceremony. I'm always eager to explore new tools and technologies that align with my interests. <span class="text-lilac font-medium">I'm an aspiring F1 engineer.</span></p>
                 </div>
             </div>
         </section>
@@ -391,10 +393,10 @@
                         </div>
                         <div class="relative pl-8">
                             <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
-                            <span class="text-sm font-bold text-zinc-500">Dec 2025</span>
-                            <h3 class="text-xl font-bold">Winner - ASME IAM3D Challenge</h3>
+                            <span class="text-sm font-bold text-zinc-500">Oct 2025 – Dec 2025</span>
+                            <h3 class="text-xl font-bold">ASME EFx iAM3D Challenge</h3>
                             <p class="text-zinc-300 font-medium">Team HATech</p>
-                            <p class="text-zinc-500 text-sm mt-1">Secured 1st Place in the additive manufacturing design competition.</p>
+                            <p class="text-zinc-500 text-sm mt-1">Led component design, rapid prototyping, and technical documentation</p>
                         </div>
                         <div class="relative pl-8">
                             <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
@@ -411,12 +413,12 @@
         <section id="certifications" class="min-h-screen flex flex-col justify-center py-20 reveal">
             <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Licenses & Certifications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                
-                <a href="https://credentials.asme.org/7be3840c-e2d0-45df-96f2-fd2de78ab731#acc.2eKcGuOI" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
-                    <img src="efxiam3d.png" alt="ASME Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+
+                <a href="https://www.coursera.org/account/accomplishments/specialization/VMIOREBX03RI" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer">
+                    <img src="https://l2faulty.github.io/tahafarrukh/umich.png" alt="UMich Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
                     <div class="relative z-10">
-                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">ASME EFx iAM3D 1st Place</h3>
-                        <p class="text-xs text-zinc-500 mt-1">ASME</p>
+                        <h3 class="text-sm font-bold group-hover:text-lilac transition-colors leading-tight">Rocket Science 101</h3>
+                        <p class="text-xs text-zinc-500 mt-1">University of Michigan</p>
                     </div>
                 </a>
 
@@ -471,6 +473,29 @@
             </div>
         </section>
 
+        <section id="awards" class="min-h-screen flex flex-col justify-center py-20 reveal">
+            <h2 class="text-xs uppercase tracking-[0.2em] text-zinc-500 font-bold mb-12">Awards & Honors</h2>
+            <div class="flex flex-col gap-6 w-full max-w-4xl">
+                
+                <a href="https://credentials.asme.org/7be3840c-e2d0-45df-96f2-fd2de78ab731#acc.2eKcGuOI" target="_blank" rel="noopener noreferrer" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer w-full">
+                    <img src="efxiam3d.png" alt="ASME Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-lg font-bold group-hover:text-lilac transition-colors leading-tight">ASME EFx iAM3D 1st Place</h3>
+                        <p class="text-sm text-zinc-500 mt-1">ASME</p>
+                    </div>
+                </a>
+
+                <div @click="openModal('nust_award')" class="spotlight-card p-6 rounded-2xl flex items-center space-x-5 group relative z-10 cursor-pointer w-full">
+                    <img src="nustlogo.png" alt="NUST Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
+                    <div class="relative z-10">
+                        <h3 class="text-lg font-bold group-hover:text-lilac transition-colors leading-tight">NUST High Achiever's Ceremony</h3>
+                        <p class="text-sm text-zinc-500 mt-1">Recognized for securing 1st place at ASME Efx iAM3D 2025</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section id="contact" class="min-h-screen flex flex-col justify-center py-20 reveal">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 
@@ -485,7 +510,6 @@
                 
                 <div class="spotlight-card p-8 rounded-3xl relative z-10">
 
-                    <!-- STEP 1: Main form -->
                     <form id="contactForm" class="space-y-4 relative z-10">
                         <div class="grid grid-cols-1 gap-4">
                             <input type="text" id="name" name="name" placeholder="Name" required
@@ -498,7 +522,6 @@
                                 class="bg-[#050505] border border-[#262626] p-4 rounded-xl focus:border-lilac outline-none transition-colors text-zinc-300 w-full"></textarea>
                         </div>
 
-                        <!-- HONEYPOT: hidden from humans, bots fill it in -->
                         <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
                             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" placeholder="Your website">
                         </div>
@@ -513,7 +536,6 @@
                         </button>
                     </form>
 
-                    <!-- STEP 2: OTP verification panel (hidden initially) -->
                     <div id="otpPanel" class="hidden space-y-5 relative z-10">
                         <div class="text-center space-y-2">
                             <div class="text-2xl">📬</div>
@@ -602,25 +624,32 @@
              x-transition:leave-end="opacity-0 scale-90"
              class="bg-[#0f0f0f] border border-lilac w-[95%] md:w-full max-w-2xl rounded-3xl p-8 md:p-12 relative shadow-2xl shadow-lilac/20 overflow-y-auto max-h-[85vh] md:max-h-[90vh] pointer-events-auto z-50">
              
-            <button @click="closeModal()" class="absolute top-6 right-6 text-zinc-500 hover:text-lilac transition-colors">
+            <button @click="closeModal()" class="absolute top-6 right-6 text-zinc-500 hover:text-lilac transition-colors z-50">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
 
             <div class="space-y-6">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-lilac leading-tight" x-text="activeProjectData.title"></h2>
-                    <div class="flex gap-2 flex-wrap mt-4">
-                        <template x-for="tag in activeProjectData.tags">
-                            <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300" x-text="tag"></span>
+                
+                <template x-if="activeProjectData.title">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-lilac leading-tight" x-text="activeProjectData.title"></h2>
+                        <template x-if="activeProjectData.tags && activeProjectData.tags.length > 0">
+                            <div class="flex gap-2 flex-wrap mt-4">
+                                <template x-for="tag in activeProjectData.tags">
+                                    <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300" x-text="tag"></span>
+                                </template>
+                            </div>
                         </template>
                     </div>
-                </div>
+                </template>
 
-                <div class="space-y-4 text-zinc-300 text-lg leading-relaxed font-light">
-                    <template x-for="(para, index) in activeProjectData.desc" :key="index">
-                        <p x-text="para"></p>
-                    </template>
-                </div>
+                <template x-if="activeProjectData.desc && activeProjectData.desc.length > 0">
+                    <div class="space-y-4 text-zinc-300 text-lg leading-relaxed font-light">
+                        <template x-for="(para, index) in activeProjectData.desc" :key="index">
+                            <p x-text="para"></p>
+                        </template>
+                    </div>
+                </template>
 
                 <template x-if="activeProjectData.report">
                     <div class="flex justify-center w-full mt-8">
@@ -636,13 +665,13 @@
                 </template>
 
                 <template x-if="activeProjectData.images && activeProjectData.images.length > 0">
-                    <div class="mt-6 gap-6" 
-                         :class="activeProjectData.images.length === 1 ? 'flex justify-center' : 'grid grid-cols-1 md:grid-cols-2'">
-                        
+                    <div class="mt-2 gap-6 flex justify-center w-full">
                         <template x-for="imgObj in activeProjectData.images">
-                            <div class="space-y-2 w-full max-w-md">
-                                <img :src="imgObj.src" alt="Project Image" class="w-full h-auto rounded-xl bg-zinc-900 border border-zinc-800 object-cover">
-                                <p class="text-xs text-zinc-500 italic text-center" x-text="imgObj.caption"></p>
+                            <div class="space-y-2 w-full flex flex-col items-center">
+                                <img :src="imgObj.src" alt="Project Image" class="w-full max-w-full h-auto rounded-xl bg-zinc-900 border border-zinc-800 object-contain">
+                                <template x-if="imgObj.caption">
+                                    <p class="text-xs text-zinc-500 italic text-center" x-text="imgObj.caption"></p>
+                                </template>
                             </div>
                         </template>
                     </div>
@@ -770,6 +799,14 @@
                         ],
                         tags: ['Electronics', 'LTspice', 'Circuit Design'],
                         report: 'EE Project Report.pdf'
+                    },
+                    'nust_award': {
+                        title: '', // Intentionally left blank for image-only display
+                        desc: [],
+                        tags: [],
+                        images: [
+                            { src: 'image67.jpeg', caption: '' }
+                        ]
                     }
                 },
 
