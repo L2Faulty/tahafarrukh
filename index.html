@@ -243,19 +243,20 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <div @click="openModal('v8')" class="md:col-span-2 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full min-h-[300px] cursor-pointer">
+                <div @click="openModal('inline4')" class="md:col-span-2 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full min-h-[300px] cursor-pointer">
                     <div class="space-y-4 relative z-10">
                         <div class="flex justify-end w-full">
                             <div class="text-zinc-500 group-hover:text-lilac transition-colors">
                                 <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
                             </div>
                         </div>
-                        <h3 class="text-2xl font-bold group-hover:text-lilac transition-colors">V8 Bottom End Assembly</h3>
-                        <p class="text-zinc-400 font-light max-w-md">Detailed modeling of an engine piston, connecting rod, and crankshaft.</p>
+                        <h3 class="text-2xl font-bold group-hover:text-lilac transition-colors">Inline 4 Bottom End Assembly</h3>
+                        <p class="text-zinc-400 font-light max-w-md">SolidWorks Assembly of the Piston, Connecting Rod and Crankshaft of a 2.3L Inline-4 Powertrain.</p>
                     </div>
                     <div class="mt-8 flex gap-3 relative z-10">
-                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">AutoCAD</span>
-                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Mechanical Design</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">SolidWorks</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Powertrain Assembly</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">CAD</span>
                     </div>
                 </div>
 
@@ -322,6 +323,22 @@
                     </div>
                 </div>
 
+                <div @click="openModal('electronics')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                            </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Human Presence Radar Analysis</h3>
+                        <p class="text-zinc-500 text-sm font-light">Real-Time Human Presence  Detection via 24GHz mmWave Radar.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Electronics</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Automation</span>
+                    </div>
+                </div>
+
                 <div @click="openModal('fluid')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
                     <div class="space-y-4 relative z-10">
                         <div class="flex justify-end w-full">
@@ -333,8 +350,58 @@
                         <p class="text-zinc-500 text-sm font-light">Hydrostatic loading & trajectory analysis.</p>
                     </div>
                     <div class="mt-6 flex gap-3 flex-wrap relative z-10">
-                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Fluids</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Fluid Mechanics</span>
                         <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Python</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('fluid2')" class="md:col-span-2 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full min-h-[300px] cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac transition-colors">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold group-hover:text-lilac transition-colors">High-Pressure Hydrogen Pipeline Analysis</h3>
+                        <p class="text-zinc-400 font-light max-w-md">Conceptual Design of a High-Pressure Hydrogen Supply Line and Con-
+verging-Diverging Nozzle System.</p>
+                    </div>
+                    <div class="mt-8 flex gap-3 relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Fluid Mechanics</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">C-D Nozzle Design</span>
+                    </div>
+                </div>
+
+                <div @click="openModal('fluidlab')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Rotodynamic Pump Analysis</h3>
+                        <p class="text-zinc-500 text-sm font-light">Comparative Evaluation of Radial, Axial, and Mixed Flow Fluid Machinery.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Fluid Mechanics</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Turbomachinery</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Rotodynamic Pumps</span>
+                    </div>
+                </div>
+
+                 <div @click="openModal('mom')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Static Storm Surge Barrier Analysis</h3>
+                        <p class="text-zinc-500 text-sm font-light">Design, Analysis, and Prototyping of a Static Sector-Gate Storm Surge Barrier.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">CAD</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">MathCAD</span>
                     </div>
                 </div>
 
@@ -351,6 +418,21 @@
                     <div class="mt-6 flex gap-3 flex-wrap relative z-10">
                         <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Electronics</span>
                         <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">LTspice</span>
+                    </div>
+                </div>
+                <div @click="openModal('materials')" class="md:col-span-1 spotlight-card p-8 rounded-3xl flex flex-col justify-between group h-full cursor-pointer">
+                    <div class="space-y-4 relative z-10">
+                        <div class="flex justify-end w-full">
+                            <div class="text-zinc-500 group-hover:text-lilac">
+                                <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold group-hover:text-lilac transition-colors">Microstructural Analysis of Automotive Brake Rotors</h3>
+                        <p class="text-zinc-500 text-sm font-light">Applying the Iron-Carbon Phase Diagram to Gray Cast Iron Performance.</p>
+                    </div>
+                    <div class="mt-6 flex gap-3 flex-wrap relative z-10">
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Material Science</span>
+                        <span class="text-[10px] uppercase tracking-widest bg-zinc-800 px-3 py-1 rounded-full text-zinc-300">Iron-Carbon Phase Diagram</span>
                     </div>
                 </div>
 
@@ -396,7 +478,7 @@
                             <span class="text-sm font-bold text-zinc-500">Oct 2025 – Dec 2025</span>
                             <h3 class="text-xl font-bold">ASME EFx iAM3D Challenge</h3>
                             <p class="text-zinc-300 font-medium">Team HATech</p>
-                            <p class="text-zinc-500 text-sm mt-1">Led component design, rapid prototyping, and technical documentation</p>
+                            <p class="text-zinc-500 text-sm mt-1">Led component design, rapid prototyping, and technical documentation.</p>
                         </div>
                         <div class="relative pl-8">
                             <div class="absolute w-3 h-3 bg-zinc-800 rounded-full -left-[7.5px] top-1"></div>
@@ -481,7 +563,7 @@
                     <img src="efxiam3d.png" alt="ASME Logo" class="w-12 h-12 object-contain opacity-80 group-hover:opacity-100 transition-opacity relative z-10">
                     <div class="relative z-10">
                         <h3 class="text-lg font-bold group-hover:text-lilac transition-colors leading-tight">ASME EFx iAM3D 1st Place</h3>
-                        <p class="text-sm text-zinc-500 mt-1">ASME</p>
+                        <p class="text-sm text-zinc-500 mt-1">Secured 1st Place at ASME EFx 2025 in iAM3D Module</p>
                     </div>
                 </a>
 
@@ -727,16 +809,14 @@
                 
                 // Project Content
                 projects: {
-                    'v8': {
-                        title: "V8 Bottom End Assembly",
+                    'inline4': {
+                        title: "Inline 4 Bottom End Assembly",
                         desc: [
-                            "Driven by my passion for Formula 1 and a desire to sharpen my practical CAD skills, I used AutoCAD to design a detailed model of an engine’s core moving parts. I based the geometry on a high-performance specification—a 3.6-liter V8 with a 90 mm bore and 70 mm stroke—focusing specifically on the piston, connecting rod, and crankshaft to create a realistic powertrain setup.",
-                            "As I built the assembly, I focused on the mechanical interaction between these components, ensuring the alignment and geometry mirrored real-world physics. This project highlighted just how critical these internal relationships are for engine durability and efficiency, effectively connecting my enthusiasm for motorsports with the technical realities of mechanical design."
+                            "Driven by my passion for Formula 1 and endurance racing, and a desire to sharpen my practical CAD skills, I used SolidWorks to design a detailed model of an engine’s core moving parts. I based the geometry on a high-performance specification, a 2.3-liter Inline-4, focusing specifically on the piston, connecting rod, and crankshaft to create a realistic powertrain setup.",
+                            "As I mated the assembly, I focused on the mechanical interaction between these components, ensuring the alignment and geometry mirrored real-world physics. This project highlighted just how critical these internal relationships are for engine durability and efficiency, effectively connecting my enthusiasm for motorsports with the technical realities of mechanical design."
                         ],
-                        tags: ['AutoCAD', 'Mechanical Design'],
-                        images: [
-                            { src: 'assembly.png', caption: 'Complete Assembly' }
-                        ]
+                        tags: ['SolidWorks', 'Powertrain Assembly', 'CAD'],
+                         model: 'inline4.glb',
                     },
                     'feynman': {
                         title: "ASME Feynman's Trap",
@@ -769,7 +849,7 @@
                             "My team and I took home 1st Place in the ASME IAM3D competition by building a mechanical assembly that had to be both lightweight and durable. We relied on SolidWorks and Design for Additive Manufacturing (DFAM) to shape the parts, iterating through different designs to strip away unnecessary material without sacrificing the strength needed to survive the competition’s stress tests.",
                             "Once the design was locked in, we moved to the physical build, using 3D printing to manufacture the prototype with high precision. The assembly fit together perfectly and handled the heavy loads without failure, proving that our engineering calculations were correct and giving us the edge we needed to beat the other teams."
                         ],
-                        tags: ['EFx', 'iAM3D', 'ASME'],
+                        tags: ['EFx', 'SolidWorks', 'ASME', 'FEA'],
                         model: 'rover_model.glb',
                         images: [] // No static images for this one as per request, just the model
                     },
@@ -782,6 +862,16 @@
                         tags: ['Thermodynamics', 'MATLAB', 'Python'],
                         report: 'CEP Report (Thermodynamics).pdf'
                     },
+                    'electronics': {
+                        title: "Human Presence Radar Analysis",
+                        desc: [
+                            "For my electronics engineering semester project, I built a smart human presence detection system using an MR24HPC1 24GHz mmWave radar and an ESP32 microcontroller. We set out to fix the main flaws of standard PIR motion sensors, which stop working if a person stands completely still or if the room gets too hot. By using the MR24HPC1 radar, our system can detect macro-movements like walking, as well as micro-movements like a person's static breathing.",
+                            "To make it all work seamlessly, I wrote the firmware to run asynchronously. Instead of using standard pause commands that would freeze the system, we used continuous background timers. This allowed the ESP32 to instantly read the radar's data and a light sensor (LDR), while simultaneously hosting a live, interactive web dashboard right from the chip itself.",
+                            "On the hardware side, I ran the power calculations to ensure the ESP32's regulator wouldn't overheat during operation. We also soldered the final circuit onto a Veroboard to keep the communication signals clean and stable. In the end, the system worked flawlessly during live testing, accurately tracking targets up to 4.5 meters away and updating the dashboard in real-time without any false alarms.",
+                        ],
+                        tags: ['Electronics', 'Automation'],
+                        report: 'Electronics Project Report.pdf'
+                    },
                     'fluid': {
                         title: "Optimization of Gravity-Fed Irrigation: Hydrostatic Loading & Trajectory Analysis",
                         desc: [
@@ -791,6 +881,34 @@
                         tags: ['Fluid Mechanics', 'Python', 'CAD'],
                         report: 'Fluid Mechanics - Flood Water Gate Report.pdf'
                     },
+                    'fluid2': {
+                        title: "High-Pressure Hydrogen Pipeline Analysis",
+                        desc: [
+                            "For my Fluid Mechanics-II project, I engineered a conceptual high-pressure hydrogen refueling infrastructure designed to safely transport and dispense fuel for heavy-duty vehicles. The system architecture was built to scale from a baseline 15% hydrogen-methane blend to a 100% pure hydrogen state. I performed comprehensive fluid dynamic analyses on a 50 km, DN 200 mm commercial steel pipeline to evaluate turbulent velocity profiles and calculate Darcy-Weisbach pressure drops. To safely elevate the gas to 850 bar for buffer storage, I mathematically modeled a two-stage polytropic compressor utilizing perfect intercooling, which minimized specific work and mitigated dangerous discharge temperatures.",
+                            "To securely deliver a target mass flow rate of 0.3 kg/s into 700 bar vehicle tanks, I designed a converging-diverging (C-D) nozzle. Instead of relying on dissipative throttling valves, this nozzle utilizes isentropic expansion to achieve aerodynamic choking (Mach 1) at the throat, effectively decoupling the mass delivery rate from downstream pressure fluctuations. After calculating a critical throat diameter of 1.65 mm, I recommended a parallel nozzle array to satisfy geometric constraints and manage internal shockwaves during supersonic flow."
+                        ],
+                        tags: ['Fluid Mechanics', 'C-D Nozzle Design'],
+                        report: 'FM CEP Report.pdf'
+                    },
+                    'fluidlab': {
+                        title: "Rotodynamic Pump Analysis",
+                        desc: [
+                            "For my Fluid Mechanics project, I led a comprehensive comparative analysis of rotodynamic fluid machinery, specifically evaluating the internal kinematics and operational principles of radial, axial, and mixed flow pumps. By investigating the fundamental mechanisms of fluid momentum transfer—ranging from pure centrifugal force in radial impellers to aerodynamic lift in axial propellers—I mapped how specific impeller geometries directly dictate performance outcomes and real-world industrial applications.",
+                            "To standardize the pump selection process, I mathematically analyzed the dimensionless parameter of specific speed (Ns​), demonstrating its critical role in correlating hydraulic head, volumetric discharge, and rotational speed at the Best Efficiency Point (BEP). Furthermore, the project culminated in a rigorous assessment of characteristic performance curves (Head-Discharge and Power-Discharge), establishing vital operational safety boundaries to mitigate risks like motor overloading and cavitational degradation, particularly highlighting the danger of shut-off head conditions in axial pumps."
+                        ],
+                        tags: ['Fluid Mechanics', 'Turbomachinery','Rotodynamic Pumps'],
+                        report: 'FM Lab Project.pdf'
+                    },
+                    'mom': {
+                        title: "Static Storm Surge Barrier Analysis",
+                        desc: [
+                            "For my Mechanics of Materials II project, I helped engineer and prototype a static sector-gate storm surge barrier, inspired by the Maeslantkering in the Netherlands. The objective was to build a 600 mm cantilever barrier capable of transferring a heavy horizontal resultant force from a curved gate surface down to a single 10 mm pivot point using balsa wood and glue. After evaluating multiple configurations using a weighted decision matrix, we chose a fully triangulated 3D truss frame. This specific design was selected because it converts member forces into pure axial loads, maximizing structural efficiency and eliminating individual member bending.",
+                            "Because we were strictly prohibited from using Finite Element Analysis (FEA) for this project, I validated the structural integrity using classical analytical methods in MathCAD. I rigorously evaluated the balsa wood and birch ice-cream stick structure for Euler buckling, shear stress, and combined loading, while mathematically ensuring the dead-weight deflection (sag) stayed well below the 6 mm limit.",
+                            "The physical testing results drastically exceeded expectations. While the baseline requirement was to hold a 50 N load for 10 seconds, our final barrier weighed a mere 500 grams yet successfully sustained an ultimate load of 1814 N (approximately 185 kg). This definitive result proved the extreme load-path efficiency of our triangulated design."
+                        ],
+                        tags: ['CAD', 'MathCAD'],
+                        report: 'MOM PROJECT REPORT.pdf'
+                    },
                     'vibration': {
                         title: "Industrial Machinery Vibration Monitor & Safety Cut-off System",
                         desc: [
@@ -799,6 +917,15 @@
                         ],
                         tags: ['Electronics', 'LTspice', 'Circuit Design'],
                         report: 'EE Project Report.pdf'
+                    },
+                    'materials': {
+                        title: "Microstructural Analysis of Automotive Brake Rotors",
+                        desc: [
+                            "For my Materials Engineering group project, I led an analysis on the microstructural properties of automotive brake rotors, specifically focusing on how the Iron-Carbon phase diagram dictates the use of Gray Cast Iron in high-stress braking environments. We evaluated the critical interplay between the material's composition (3.0% - 3.5% carbon, 1.8% - 2.8% silicon) and its resulting physical properties. By analyzing the phase diagram and non-equilibrium cooling rates, we demonstrated how silicon acts as a graphitizing agent during the manufacturing process, forcing carbon to precipitate as interconnected graphite flakes within a wear-resistant pearlitic matrix.",
+                            "Our report detailed how this specific microscopic architecture directly addresses the extreme thermal and mechanical demands of stopping a vehicle. I documented the mechanisms by which the graphite flakes provide superior thermal conductivity to prevent brake fade, natural damping capacity to eliminate severe brake squealing, and a unique crack-arrest feature that stops microscopic thermal fatigue fractures from propagating through the rotor. Ultimately, the project highlighted how foundry cooling controls are strictly managed to prevent the formation of brittle White Cast Iron or overly soft ferrite, ensuring the rotors maintain their structural integrity over tens of thousands of miles of aggressive heating and cooling cycles."
+                        ],
+                        tags: ['Material Science', 'Iron-Carbon Phase Diagram'],
+                        report: 'Materials Engineering Project Report.pdf'
                     },
                     'nust_award': {
                         title: '', // Intentionally left blank for image-only display
